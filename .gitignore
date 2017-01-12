@@ -15,7 +15,7 @@
 Thumbs.db
 .cache
 .project
-.settings
+*.settings
 .tmproj
 *.esproj
 nbproject
