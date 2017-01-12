@@ -1,0 +1,174 @@
+/*
+ *
+ * Theme: Pyxlate
+ * Author: Andrew Masat
+ * Description: A Modern CMS built to simplify the management of you content and allow for meaningful personalization. 
+ * Tags: Green
+ *  
+ */
+
+/* Imports */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
+
+/* General */
+body {
+	background-color: #fff;
+	color: #8c9398;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+}
+p {
+	word-spacing: 1px;
+	line-height: 25px;
+}
+section.content h2, section.content h3 {
+	color: #273035;
+	font-weight: 600;
+	letter-spacing: 2px;
+	line-height: 1.2em;
+	margin: 0px;
+	padding-bottom: 20px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+/* Links */
+a {
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	transition: all 0.2s;
+}
+a:hover, a:focus {
+	color: #2FA35A;
+	text-decoration: none;
+}
+a.btn-default {
+	background-color: #5cb85c;
+	border: none;
+	border-radius: 3px !important;
+	box-shadow: 0 0 5px rgba(0,0,0,0.3);
+	color: #FFF;
+}
+a.btn-default:hover {
+	background-color: #449d44;
+	box-shadow: 0 0 1px rgba(0,0,0,0.3);
+	color: #FFF;
+}
+
+/* Header */
+header {
+	height: 50px;
+}
+header a.logo {
+	color: #000 !important;
+	font-size: 30px;
+	font-weight: 300;
+	padding: 14px 0 14px 15px;
+}
+header .logo a:hover,
+header .logo a:focus,
+header .logo a:active {
+	color: #000;
+	text-decoration: none;
+}
+header ul.navbar-nav li a {
+	color: #222 !important;
+	display: block;
+	font-size: 12px;
+	padding: 17px 10px 13px;
+	text-transform: uppercase;
+}
+header ul.navbar-nav li a:hover,
+header ul.navbar-nav li a:focus,
+header ul.navbar-nav li a:active {
+	color: #2FA35A !important;
+	text-decoration: none;
+}
+
+/* Footer */
+footer {
+	background-color: #242830;
+	color: #8c9398;
+	padding: 50px 0;
+	text-align: center;
+	text-transform: uppercase;
+}
+footer a {
+	color: #a1a9b0;
+}
+footer .copyright {
+	color: #8c9398;
+	font-size: 10px;
+	text-align: center;
+}
+footer ul.menu {
+	color: #8c9398;
+	list-style: none;
+	font-size: 14px;
+	margin: 20px auto;
+	padding: 0px !important;
+}
+footer ul.menu li {
+	display: inline-block;
+	margin: 0px;
+	padding: 0px 20px;
+}
+footer ul.social li {
+	font-size: 20px !important;
+	padding: 0px 5px;
+}
+footer .line {
+	border: solid 1px #2FA35A;
+	display: block;
+	margin: 15px auto;
+	width: 90px;
+}
+
+/* Section Banners */
+section.featured {
+	background: url(../images/hero_bg.jpg) #fff no-repeat center center;
+	background-size: cover;
+	color: #fff;
+	height: 200px;
+	padding: 55px 20px;
+	text-align: center;
+}
+section.featured h2 {
+	font-size: 24px;
+	font-weight: 300;
+	margin-top: 0;
+}
+section .banner {
+	border-bottom: 1px solid #eaeaea;
+	padding: 200px 0;
+	text-align: center;
+}
+section .banner i {
+	color: #5CB85C;
+	font-size: 60px;
+	margin-bottom: 20px;
+}
+section .banner h3 {
+	font-size: 18px;
+}
+
+/* Content */
+section.content {
+	min-height: 700px;
+}
+.homeAdminSlide {
+	margin: 200px auto;
+	text-align: center;
+}
+.homeAdminSlide h2 {
+	font-size: 30px;
+}
+.homeAdminSlide p {
+	margin: 40px 0;
+}
+section .adminSlide {
+	background: url(../images/admin_slide.jpg) no-repeat center;
+	background-size: contain;
+	height: 500px;
+}

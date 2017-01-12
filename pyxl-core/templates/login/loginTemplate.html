@@ -1,0 +1,29 @@
+<section class="loginPage">
+	<a href="<%= data.environment.siteUrl %>" class="btn btn-link return"><i class="fa fa-arrow-circle-left"></i> Return to <%= data.environment.siteName %></a>
+	<div class="errorMessage"></div>
+	<div class="login">
+		<div class="logo">PyxlPress</div>
+		<form id="passwordLogin">
+			<div class="form-group">
+				<input type="text" class="form-control" name="username" id="username" placeholder="Username">
+				<div class="error"></div>
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" name="password" id="password" placeholder="Password">
+				<div class="error"></div>
+			</div>
+			<div class="checkbox pull-left">
+				<input type="checkbox" id="remember" class="styled" name="remember">
+				<label for="remember">Remember Me</label>
+			</div>
+			<a href="login/forgot" class="forgot pull-right">Forgot password?</a>
+			<button type="submit" name="login" class="btn btn-block btn-success">Login</button>
+			<% if (data.environment.allowRegister == 1) { %>
+				<div class="registerAsk">
+					<p>Do not have an account?</p>
+					<a href="register" class="btn btn-block btn-sm btn-default">Create an account</a>
+				</div>
+			<% } %>
+		</form>
+	</div>
+</section>

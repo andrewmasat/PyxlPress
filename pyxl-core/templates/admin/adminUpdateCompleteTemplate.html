@@ -1,0 +1,11 @@
+<div class="row">
+	<div class="col-sm-12">
+		<% if (data.result === 'success') { %>
+			<h2>Successfully updated to v<%= data.latestVersion %>!</h2>
+			<p>Congratulations, you are now updated to the latest version of PyxlPress and can start using the new features and settings introduced in this release.</p>
+		<% } else { %>
+			<h2>Failed to update to the latest version</h2>
+			<div class="well">Reason: <%= data.reason %></div>
+		<% } %>
+	</div>
+</div>

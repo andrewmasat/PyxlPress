@@ -1,0 +1,43 @@
+<div class="userInfo">
+	<div class="userAvatar"><img src="<%= data.environment.siteUrl %>/pyxl-content/images/avatars/<%= data.account.username %>/<%= data.account.avatar %>" onerror="this.src='http://placehold.it/60x60'"></div>
+	<div class="userName"><%= data.account.fullname %></div>
+	<div class="logout"><a href="javascript:void(0);" title="Sign Out" class="logout">Sign out</a></div>
+</div>
+<div class="userNavigation">
+	<a href="<%= data.environment.siteUrl %>" title="Return to Site"><i class="fa fa-home"></i></a>
+</div>
+<div class="sidebarWindow">
+	<div class="pages">
+		<ul>
+			<li data-target="home">
+				<a href="<%= data.environment.navUrl %>home" title="Dashboard"><i class="fa fa-tachometer"></i>Dashboard</a>
+			</li>
+			<li data-target="profile">
+				<a href="<%= data.environment.navUrl %>profile" title="Profile"><i class="fa fa-user"></i>Profile</a>
+				<ul>
+					<li><a href="<%= data.environment.navUrl %>profile/edit" data-page="edit"><i class="fa fa-pencil"></i>Edit Profile</a></li>
+					<li><a href="<%= data.environment.navUrl %>profile/settings" data-page="settings"><i class="fa fa-cog"></i>Edit Settings</a></li>
+					<li><a href="<%= data.environment.navUrl %>profile/password" data-page="password"><i class="fa fa-unlock-alt"></i>Change Password</a></li>
+				</ul>
+			</li>
+			<% if (data.account.level == 3) { %>
+				<!-- Admin Pages -->
+				<li data-target="themes">
+					<a href="<%= data.environment.navUrl %>themes" title="Themes"><i class="fa fa-paint-brush"></i>Themes</a>
+				</li>
+				<li data-target="plugins">
+					<a href="<%= data.environment.navUrl %>plugins" title="Plugins"><i class="fa fa-plug"></i>Plugins</a>
+				</li>
+				<li data-target="admin">
+					<a href="<%= data.environment.navUrl %>admin" title="Admin"><i class="fa fa-server"></i>Admin</a>
+					<ul>
+						<li><a href="<%= data.environment.navUrl %>admin/users" data-page="users"><i class="fa fa-user"></i>Users</a></li>
+						<li><a href="<%= data.environment.navUrl %>admin/roles" data-page="roles"><i class="fa fa-lock"></i>Roles</a></li>
+						<li><a href="<%= data.environment.navUrl %>admin/settings" data-page="settings"><i class="fa fa-pencil"></i>Site Settings</a></li>
+						<li><a href="<%= data.environment.navUrl %>admin/update" data-page="update"><i class="fa fa-magic"></i>Updates</a></li>
+					</ul>
+				</li>
+			<% } %>
+		</ul>
+	</div>
+</div>

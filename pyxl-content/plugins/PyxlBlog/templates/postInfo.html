@@ -1,0 +1,10 @@
+<h4>Overview</h4>
+<% if(data.pb_status == 0) { %>
+	<span class="label label-default">Draft</span>
+<% } else if(data.pb_status == 1) { %>
+	<span class="label label-success">Published</span>
+<% } %>
+<% if(data.pb_update !== '12/31/69 6:00 PM') { %>
+	<p>Last Updated: <span class="pull-right"><%= data.pb_update %></span></p>
+<% } %>
+<p>Post Created: <span class="pull-right"><%= data.pb_timestamp %></span></p>

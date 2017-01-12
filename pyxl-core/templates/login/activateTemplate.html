@@ -1,0 +1,24 @@
+<section class="activatePage">
+	<div class="panel">
+		<div class="panel-body">
+			<h2 class="title">Activating your account</h2>
+			<div class="panel-icon">
+				<% if (data.result == 'SUCCESS') { %>
+					<i class="fa fa-check"></i>
+				<% } else { %>
+					<i class="fa fa-times"></i>
+				<% } %>
+			</div>
+			<% if (data.result == 'SUCCESS') { %>
+				<p>Your account was successfully activated!</p>
+			<% } else if (data.result == 'FAILED' && data.reason == 'BAD_CODE') { %>
+				<p>It appears something is wrong with your activation link, please go back to your settings and resend the activation email.</p>
+			<% } else if (data.result == 'FAILED' && data.reason == 'NO_USER') { %>
+				<p>It appears the email and activation link you used did not work, please go back to your settings and confirm your email address is correct and then resend the activation email.</p>
+			<% } else if (data.result == 'FAILED' && data.reason == 'MISSING_TOKEN') { %>
+				<p>It appears you are missing the correct activation link, please go back to your settings and resend the activation email.</p>
+			<% } %>
+			<a href="profile/edit" class="btn btn-default">Profile Page</a>
+		</div>
+	</div>
+</section>

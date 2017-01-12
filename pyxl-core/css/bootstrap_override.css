@@ -1,0 +1,20 @@
+/* Bootstrap Override */
+
+/* Panel */
+.panel-default {
+  border: none;
+}
+.panel-default>.panel-heading {
+  background-color: #273135;
+  border: none;
+  color: #FFF;
+  font-weight: 500;
+}
+.panel-body .form-group:last-child {
+	margin-bottom: 0;
+}
+.modal-content {
+	border-color: rgba(0, 0, 0, 0.1);
+	border-radius: 0;
+	box-shadow: none;
+}

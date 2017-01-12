@@ -1,0 +1,29 @@
+<div class="pageOptionMenu">
+	<a href="../plugins/PyxlBlog/new" class="btn btn-default btn-sm">Create New Post</a>
+</div>
+
+<table class="table table-striped">
+	<thead>
+		<tr> 
+			<th>Title</th>
+			<th>Author</th>
+			<th>Modified</th>
+			<th>Published</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% _.each(data, function(num,index) { %>
+			<tr>
+				<td><a href="../plugins/PyxlBlog/edit/<%= data[index].pb_id %>" class="title"><%= data[index].pb_title %></a></td>
+				<td><%= data[index].pb_author %></td>
+				<td><%= data[index].pb_timestamp %></td>
+				<td><% if(data[index].pb_status == 1){ %>Publish<% } else { %>Draft<% } %></td>
+				<td class="text-right">
+					<a href="../plugins/PyxlBlog/edit/<%= data[index].pb_id %>" class="btn btn-default btn-xs">Edit</a>
+					<a href="#" class="btn btn-default btn-xs">View</a>
+				</td>
+			</tr>
+		<% }); %>
+	</tbody>
+</table>

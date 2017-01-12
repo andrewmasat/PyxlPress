@@ -1,0 +1,29 @@
+<div class="panel pageContent">
+	<div class="panel-body">
+		<div class="pageOptionMenu">
+			<button type="button" class="btn btn-default btn-sm">Activate All</button>
+			<button type="button" class="btn btn-default btn-sm">Deactivate All</button>
+		</div>
+		<% _.each(data, function(num,index) { %>
+			<div class="row plugin">
+				<div class="col-sm-4">
+					<h3><%= data[index].pluginName %></h3>
+					<% if (data[index].pluginActive) { %>
+						<button class="btn pluginBtn btn-danger deactivatePlugin" role="button" data-level="<%= data[index].pluginSecLevel %>" data-plugin="<%= data[index].pluginName %>" data-url="<%= data[index].pluginUrl %>" data-version="<%= data[index].pluginVersion %>">Deactivate</button>
+					<% } else { %>
+						<button class="btn pluginBtn btn-success activatePlugin" role="button" data-level="<%= data[index].pluginSecLevel %>" data-plugin="<%= data[index].pluginName %>" data-url="<%= data[index].pluginUrl %>" data-version="<%= data[index].pluginVersion %>"><% if (data[index].pluginInstalled) { %>Activate<% } else { %>Install<% } %></button>
+						<% if (data[index].pluginInstalled) { %>
+							<button class="btn btn-link pluginBtn uninstallPlugin" role="button" data-level="<%= data[index].pluginSecLevel %>" data-plugin="<%= data[index].pluginName %>" data-url="<%= data[index].pluginUrl %>" data-version="<%= data[index].pluginVersion %>">Uninstall</button>
+						<% } %>
+					<% } %>
+				</div>
+				<div class="col-sm-8">
+					<p><%= data[index].pluginDescription %></p>
+					<% if (data[index].pluginVersion) { %>
+						<div class="version">Version: <%= data[index].pluginVersion %></div>
+					<% } %>
+				</div>
+			</div>
+		<% }); %>
+	</div>
+</div>

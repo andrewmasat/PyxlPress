@@ -1,0 +1,47 @@
+/*
+ *
+ * Theme: pyxlateTwo
+ * Author: Andrew Masat
+ * Description: 
+ * Tags: 
+ *  
+ */
+
+/* Imports */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
+
+/* General */
+body {
+	background-color: #fff;
+	color: #8c9398;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+}
+
+/* Header */
+header {
+	padding: 30px 25px;
+}
+header .logo a {
+	color: #000;
+	font-size: 30px;
+	font-weight: 300;
+	line-height: 34px;
+}
+header .logo a:hover,
+header .logo a:focus,
+header .logo a:active {
+	color: #000;
+	text-decoration: none;
+}
+header .dlLink a {
+	background: #fff;
+	border-color: #1ab394;
+	color: #1ab394;
+	transition: all 0.2s ease;
+}
+header .dlLink a:hover {
+	background: #1ab394;
+	border-color: #1ab394;
+	color: #fff;
+}

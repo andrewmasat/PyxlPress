@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="col-sm-12">
+		<form id="submitNewFile">
+			<div class="form-group">
+				<div class="row">
+					<div class="col-sm-6">
+						<label for="fileName">File Name</label>
+						<input type="text" class="form-control" id="fileName" name="fileName" placeholder="ex: blog">
+					</div>
+					<div class="col-sm-6">
+						<label for="fileType">File Type</label>
+						<select class="form-control" id="fileType" name="fileType">
+							<option value="html">HTML</option>
+							<option value="css">CSS</option>
+							<option value="js">JavaScript</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<textarea id="fileContent" name="fileContent" class="form-control" placeholder="<!-- Add HTML your code here -->"></textarea>
+			</div>
+			<hr />
+			<div class="form-group">
+				<button type="submit" id="submitEdit" class="btn btn-success pull-right" data-loading-text="Saving..." autocomplete="off">Save File</button>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,53 @@
+<form id="submitSettingsPage">
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label>Site Name:</label>
+				<input type="text" class="form-control" id="siteName" name="siteName" placeholder="Site Name" value="<%= data.siteName %>">
+			</div>
+			<div class="form-group">
+				<label>Site Url:</label>
+				<input type="text" class="form-control" id="siteUrl" name="siteUrl" placeholder="Site Url" value="<%= data.siteUrl %>">
+			</div>
+			<div class="form-group">
+				<label>Session Time:</label>
+				<input type="text" class="form-control" id="timeLimit" name="timeLimit" placeholder="Default: 30 minutes" value="<%= data.timeLimit %>">
+				<small class="help-block">Default = 30 Mins | 0 = No limit</small>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<div class="checkbox">
+					<input type="checkbox" id="allowRegister" class="styled" name="allowRegister" value="1" <% if(data.allowRegister == 1) { %> checked<% } %>>
+					<label for="allowRegister">Allow Site Registration</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="checkbox">
+					<input type="checkbox" id="logLogins" class="styled" name="logLogins" value="1" <% if(data.logLogins == 1) { %> checked<% } %>>
+					<label for="logLogins">Log Logins</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="checkbox">
+					<input type="checkbox" id="fixedWidth" class="styled" name="fixedWidth" value="1" <% if(data.fixedWidth == 1) { %> checked<% } %>>
+					<label for="fixedWidth">Set Admin Fixed Width</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="checkbox">
+					<input type="checkbox" id="debug" class="styled" name="debug" value="1" <% if(data.debug == 1) { %> checked<% } %>>
+					<label for="debug">(Advanced) Debug Console</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<hr />
+			<div class="form-group">
+				<button type="submit" data-loading-text="Saving..." id="submitEdit" class="btn btn-success pull-right" autocomplete="off">Save Settings</button>
+			</div>
+		</div>
+	</div>
+</form>

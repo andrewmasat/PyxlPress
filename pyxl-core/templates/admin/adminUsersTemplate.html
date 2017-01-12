@@ -1,0 +1,38 @@
+<div class="pageOptionMenu">
+	<a href="admin/users/new" class="btn btn-default btn-sm createUser">Create User</a>
+</div>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Username</th>
+			<th>Display Name</th>
+			<th>Role</th>
+			<th>Verified</th>
+			<th>Registered</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% _.each(data, function(num,index) { %>
+			<tr>
+				<th scope="row"><%= data[index].userId %></th>
+				<td><a href="user/<%= data[index].userId %>"><%= data[index].username %></a></td>
+				<td><%= data[index].displayName %></td>
+				<td class="level-<%= data[index].level %>"><%= data[index].role %></td>
+				<td>
+					<% if(data[index].verified == 1) { %>
+						<i class="fa fa-check"></i>
+					<% } if(data[index].verified == 0) { %>
+						<i class="fa fa-remove"></i>
+					<% } %>
+				</td>
+				<td><%= data[index].createDate %></td>
+				<td class="text-right">
+					<% if(data[index].disabled == 1) { %><i class="fa fa-lock"></i><% } %>
+					<a href="admin/users/<%= data[index].userId %>" class="btn btn-xs btn-default">Edit</a>
+				</td>
+			</tr>
+		<% }); %>
+	</tbody>
+</table>

@@ -1,0 +1,44 @@
+<div class="pageHeader">
+	<h2><%= data.page.title %></h2>
+	<div class="breadcrumbs"><a href="#">Home</a> / Themes / <%= data.page.title %></div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		<div class="panel">
+			<div class="panel-body">
+				<div class="leftMenu">
+					<ul>
+						<li><a href="../../themes"><i class="fa fa-chevron-left"></i> Back</a></li>
+						<li><a href="../../themes/<%= data.page.location %>/new"><i class="fa fa-plus"></i> New File</a></li>
+						<li class="divide"></li>
+						<li><a href="#" class="previewTheme" data-theme="<%= data.page.location %>"><i class="fa fa-low-vision"></i> Preview Theme</a></li>
+						<li><a href="#" class="activateTheme" data-theme="<%= data.page.location %>"><i class="fa fa-bolt"></i> Activate Theme</a></li>
+						<li><a href="#" data-toggle="modal" data-target="#deleteThemeModal"><i class="fa fa-trash"></i> Delete Theme</a></li>
+						<li class="divide"></li>
+						<li class="title">HTML</li>
+						<% _.each(data.page.themeFiles, function(num,index) { %>
+							<% if (data.page.themeFiles[index].type === 'html') { %>
+								<li><a href="../../themes/<%= data.page.location %>/<%= data.page.themeFiles[index].fileName %>" class="files" data-page="<%= data.page.themeFiles[index].fileName %>"><i class="fa fa-file-code-o"></i> <%= data.page.themeFiles[index].fileName %></a></li>
+							<% } %>
+						<% }); %>
+						<li class="title">CSS</li>
+						<% _.each(data.page.themeFiles, function(num,index) { %>
+							<% if (data.page.themeFiles[index].type === 'css') { %>
+								<li><a href="../../themes/<%= data.page.location %>/<%= data.page.themeFiles[index].fileName %>" class="files" data-page="<%= data.page.themeFiles[index].fileName %>"><i class="fa fa-paint-brush"></i> <%= data.page.themeFiles[index].fileName %></a></li>
+							<% } %>
+						<% }); %>
+						<li class="title">JavaScript (advanced)</li>
+						<% _.each(data.page.themeFiles, function(num,index) { %>
+							<% if (data.page.themeFiles[index].type === 'js') { %>
+								<li><a href="../../themes/<%= data.page.location %>/<%= data.page.themeFiles[index].fileName %>" class="files" data-page="<%= data.page.themeFiles[index].fileName %>"><i class="fa fa-code"></i> <%= data.page.themeFiles[index].fileName %></a></li>
+							<% } %>
+						<% }); %>
+					</ul>
+				</div>
+				<div class="pageContent theme">
+					<div class="pageEntry clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

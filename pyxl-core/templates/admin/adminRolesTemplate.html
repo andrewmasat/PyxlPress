@@ -1,0 +1,32 @@
+<div class="pageOptionMenu">
+	<button class="btn btn-default btn-sm createUser">Create New Role</button>
+</div>
+<form id="submitRoles">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>User Count</th>
+				<th>Role Name</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% _.each(data, function(num,index) { %>
+				<tr>
+					<th scope="row"><%= data[index].roleId %></th>
+					<td><%= data[index].userCount %></td>
+					<td>
+						<input type="text" class="form-control input-sm" id="roleName<%= data[index].roleId %>" name="roleName<%= data[index].roleId %>" value="<%= data[index].roleName %>">
+					</td>
+					<td>
+						<% if (index > 3) { %>
+							<button class="remove"><i class="fa fa-minus"></i></button>
+						<% } %>
+					</td>
+				</tr>
+			<% }); %>
+		</tbody>
+	</table>
+	<button id="submitEdit" class="btn btn-success btn-sm pull-right">Save</button>
+</form>

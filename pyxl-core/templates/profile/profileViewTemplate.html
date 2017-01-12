@@ -1,0 +1,13 @@
+<div class="myProfileImg">
+	<img src="<%= data.siteUrl %>/pyxl-content/images/avatars/<%= data.username %>/<%= data.avatar %>" onerror="this.src='http://placehold.it/250x250'">
+</div>
+<div class="myProfile">
+	<div class="name"><%= data.fullname %></div>
+	<div class="username"><%= data.username %></div>
+	<hr />
+	<div class="info">
+		<span><i class="fa fa-lock"></i> Email:</span>
+		<%= data.email %> 
+		<% if (data.verified == 1) { %><i class="fa fa-check"></i><% } %>
+	</div>
+</div>

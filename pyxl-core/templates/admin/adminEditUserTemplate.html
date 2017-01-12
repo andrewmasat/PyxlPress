@@ -1,0 +1,75 @@
+<div class="pageOptionMenu">
+	<div class="userAvatar"><img src="<%= data.siteUrl %>/pyxl-content/images/avatars/<%= data.username %>/<%= data.avatar %>" onerror="this.src='http://placehold.it/60x60'"></div>
+	<span>User Id: <%= data.userId %></span>
+	<span><% if(data.verified == 1) { %>Verified<% } else { %>Not Verified<% } %></span>
+	<span>Last Logged In: <%= data.loginAttempt %></span>
+</div>
+<form id="editUser" class="form-horizontal row">
+	<div class="col-sm-12">
+		<% if(data.userId == 1) { %><p class="alert alert-danger">This user is a super admin and cannot be edited or disabled on this page.</p></p><% } %>
+		<div class="form-group">
+			<label class="col-sm-3 control-label">Registered Date</label>
+			<div class="col-sm-9 checkbox">
+				<%= data.createDate %>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label">Username</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" value="<%= data.username %>" disabled />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label">Email</label>
+			<div class="col-sm-9">
+				<input type="email" class="form-control" id="email" name="email" value="<%= data.email %>" />
+			</div>
+		</div>
+		<hr />
+		<div class="form-group">
+			<label class="col-sm-3 control-label">Display Name</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="displayName" name="displayName" value="<%= data.displayName %>" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label">Clear Profile Picture</label>
+			<div class="col-sm-9 checkbox">
+				<label>
+					<input type="checkbox" id="clearAvatar" name="clearAvatar" />
+				</label>
+			</div>
+		</div>
+		<hr />
+		<div class="form-group">
+			<label class="col-sm-3 control-label">Role</label>
+			<div class="col-sm-9">
+				<select id="role" name="role" class="form-control">
+					<% _.each(data.roles, function(num,index) { %>
+						<option value="<%= data.roles[index].roleLevel %>" <% if(data.roles[index].roleLevel == data.level) { %> selected<% } %>><%= data.roles[index].roleName %></option>
+					<% }); %>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label">Disable Account</label>
+			<div class="col-sm-9 checkbox">
+				<label>
+					<input type="checkbox" id="disableAccount" name="disableAccount"<% if(data.disabled == 1) { %> checked<% } %> />
+				</label>
+			</div>
+		</div>
+		<hr />
+		<div class="form-group">
+			<div class="col-sm-12">
+				<% if(data.userId == 1) { %>
+					<a href="admin/users" class="btn btn-default">Back</a>
+				<% } else { %>
+					<a href="admin/users" class="btn btn-default">Back</a>
+					<a href="admin/users" class="btn btn-link pull-right">Cancel</a>
+					<button type="submit" class="btn btn-success pull-right" id="submitEdit" data-loading-text="Saving...">Save Profile</button>
+				<% } %>
+			</div>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,15 @@
+<section class="loginPage">
+	<div class="registerComplete">
+		<h1 class="title">Registration Failed</h1>
+		<% if (data.result == 'USER_EXISTS') { %>
+			<p>The username you selected is not available, please try again using a different username.</p>
+		<% } else if (data.result == 'EMPTY_FIELD') { %>
+			<p>You are missing a field to register your account, make sure to include your username, email, password, and confirm the password to complete the registration.</p>
+		<% } else if (data.result == 'REGISTRATION_CLOSED') { %>
+			<p>Registration is closed at this time, please try registering at a later.</p>
+		<% } else { %>
+			<p>Something failed during the registration process, please try again.</p>
+		<% } %>
+		<a href="register" class="btn btn-default tryagain">Try Again</a>
+	</div>
+</section>

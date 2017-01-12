@@ -1,0 +1,37 @@
+<section class="loginPage">
+	<div class="register">
+		<h1 class="title">Registration</h1>
+		<form id="register" class="form-horizontal">
+			<div class="form-group">
+				<label for="username" class="col-sm-3 control-label">Username:</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" id="username" name="username" placeholder="Username">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="email" class="col-sm-3 control-label">Email:</label>
+				<div class="col-sm-9">
+					<input type="email" class="form-control" id="email" name="email" placeholder="Email">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="password" class="col-sm-3 control-label">Password:</label>
+				<div class="col-sm-5">
+					<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+					<p class="text-danger error fadein">Passwords Mismatch</p>
+				</div>
+				<div class="col-sm-4">
+					<input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-3">
+					<a href="login" class="btn btn-default">Login</a>
+				</div>
+				<div class="col-sm-9">
+					<button type="submit" data-loading-text="Loading..." id="submitEdit" class="btn btn-success pull-right" autocomplete="off">Register</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</section>

@@ -1,0 +1,10 @@
+<div class="welcome">
+	<h1>Welcome to <%= data.environment.siteName %></h1>
+	<% if (data.account.userId === 1) { %>
+		<h4 class="spot">Your PyxlPress installation is done and you are now ready to begin creating <%= data.environment.siteName %>! We recommend that you check out the <a href="#">Getting Started</a> guides to allow yourself to become more familiar with PyxlPress and the customization you can achieve with your new website.</h4>
+		<p>If this is your first time, then try heading to your <a href="/profile">profile</a> and updating that? After you have done that then you can start building your own theme!</p>
+	<% } else { %>
+		<h4 class="spot">Your account is now created!</h4>
+		<p>Thank you for creating an account on <%= data.environment.siteName %>, feel free to update your <a href="profile">profile</a>.</p>
+	<% } %>
+</div>

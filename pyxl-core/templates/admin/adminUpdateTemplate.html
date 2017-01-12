@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="col-sm-12">
+		<% if (data.needUpdate) { %>
+			<p>You currently have <strong>v<%= data.currentVersion %></strong> installed, the latest <strong><% if (data.isImportant) { %>Major<% } else { %>Minor<% } %></strong> version available is <strong>v<%= data.latestVersion %></strong>.</p>
+			<p>It is recommended that you update to the latest version to keep your site protected. These updates also can provide new features to your site, read below to see all of the changes.</p>
+			<div class="well changelog">
+				<%= data.changeLog %>
+			</div>
+			<button class="btn btn-success installUpdate">Download &amp; Install v<%= data.latestVersion %></button>
+		<% } else { %>
+			<p>There are no updates available at this time, you will be notified if there is anything available.</p>
+			<p>If you need to re-install version <%= data.latestVersion %>, you can do so here or download the package and re-install manually:</p>
+			<button class="btn btn-success installUpdate">Re-install v<%= data.latestVersion %></button>
+		<% } %>
+	</div>
+</div>

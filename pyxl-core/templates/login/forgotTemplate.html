@@ -1,0 +1,16 @@
+<section class="loginPage">
+	<a href="<%= data.environment.siteUrl %>" class="btn btn-link return"><i class="fa fa-arrow-circle-left"></i> Return to <%= data.environment.siteName %></a>
+	<div class="errorMessage"></div>
+	<div class="successMessage hidden">Successfully sent your reset instructions to <span></span></div>
+	<div class="login">
+		<div class="logo small">Forgot Password</div>
+		<form id="forgotPassword">
+			<div class="form-group">
+				<input type="text" class="form-control" name="username" id="username" placeholder="Email or Username">
+				<div class="error"></div>
+			</div>
+			<button type="submit" name="forgot" class="btn btn-block btn-success">Send Reset Instructions</button>
+			<a href="login" class="btn btn-block btn-link">Back to Login</a>
+		</form>
+	</div>
+</section>

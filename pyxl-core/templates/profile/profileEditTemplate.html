@@ -1,0 +1,43 @@
+<form id="saveAvatar" class="form-horizontal row">
+	<div class="col-sm-12">
+		<div class="form-group">
+			<label class="col-sm-3 control-label">Profile Picture</label>
+			<div class="col-sm-9">
+				 <input type="file" name="file" id="file" class="inputFile" />
+				 <label for="file" class="btn btn-default fileLabel">Choose an image</label>
+				 <button type="submit" class="btn btn-success" id="submitAvatar" data-loading-text="Saving..." disabled>Upload Picture</button>
+			</div>
+		</div>
+		<hr />
+	</div>
+</form>
+<form id="editProfile" class="form-horizontal row">
+	<div class="col-sm-12">
+		<div class="form-group">
+			<label class="col-sm-3 control-label">Display Name</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="displayname" name="displayname" value="<%= data.fullname %>" />
+			</div>
+		</div>
+		<div class="form-group has-feedback <% if (data.verified == 1) { %>has-success<% } else { %>has-error<% } %>">
+			<label class="col-sm-3 control-label">Email</label>
+			<div class="col-sm-9">
+				<input type="email" class="form-control" id="email" name="email" value="<%= data.email %>" />
+				<% if (data.verified == 1) { %>
+					<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+				<% } else { %>
+					<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+					<br /><button type="button" class="btn btn-danger resendActivation">Send Activation Email</button>
+					<p class="help-block">If you have not received your activation email, please check to make sure the email you entered above is correct and then resend your activation email. Make sure to check your spam folder if you still do not receive the email.</p>
+				<% } %>
+				<p class="help-block newEmail hidden">If you change your email, you will need to validate your new email address. After you save the new email address, you will be asked to send a new activation email.</p>
+			</div>
+		</div>
+		<hr />
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-9">
+				<button type="submit" class="btn btn-success pull-right" id="submitEdit" data-loading-text="Saving...">Save Profile</button>
+			</div>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,25 @@
+<div class="pageOptionMenu">
+	<a href="themes/new" class="btn btn-default btn-sm">Create New Theme</a>
+</div>
+<div class="row">
+	<% _.each(data, function(num,index) { %>
+		<div class="col-sm-12 theme" data-theme="<%= data[index].folder %>">
+			<div class="col-sm-4">
+				<img src="../pyxl-content/themes/<%= data[index].folder %>/screenshot.jpg" onerror="this.src='http://placehold.it/300x200'" />
+			</div>
+			<div class="col-sm-8">
+				<h3><%= data[index].themeName %></h3>
+				<span class="themeInfo label label-default">Author: <%= data[index].themeAuthor %></span>
+				<p class="description"><%= data[index].themeDesc %></p>
+			</div>
+			<div class="themeBtn btn-group pull-right">
+				<a href="themes/<%= data[index].folder %>/index" class="btn btn-link" role="button">Edit Theme</a>
+				<% if (data[index].active) { %>
+					<button class="btn btn-success" role="button" data-theme="<%= data[index].folder %>" disabled>Activate</button>
+				<% } else { %>
+					<button class="btn btn-success activateTheme" role="button" data-theme="<%= data[index].folder %>">Activate</button>
+				<% } %>
+			</div>
+		</div>
+	<% }); %>
+</div>

@@ -1,0 +1,94 @@
+/* PyxlPress: Admin Dashboard | v1 | Andrew Masat */
+/* Mobile CSS */
+
+@media (max-width: 785px) {
+	/* General */
+	.stage {
+		overflow-x: hidden;
+	}
+	body.fixed .stage {
+		left: 0;
+		margin-left: 0;
+		right: 0;
+	}
+
+	/* Hide Elements */
+	.userInfo {
+		display: none;
+	}
+
+	/* Login */
+	body.fixed .login {
+		padding: 20px;
+	}
+
+	/* Header */
+	header, .notice, .statusAlerts {
+		height: 40px;
+	}
+	header {
+		margin-left: 80px;
+		width: auto;
+	}
+	.notice {
+		width: auto;
+	}
+	.statusAlerts ul.statusNotice li a {
+		padding: 8px 13px 7px;
+	}
+	.statusAlerts ul.statusNotice li a span {
+		top: 11px;
+		left: 12px;
+	}
+	.statusAlerts .statusPanel {
+		top: 40px
+	}
+
+	/* Sidebar */
+	.sidebar {
+		width: 80px;
+	}
+	.sidebar .pages ul li a {
+		overflow: hidden;
+		white-space: nowrap;
+	}
+	.sidebar .pages ul li a i {
+		margin: 0 32px 0 18px;
+	}
+
+	/* Content */
+	.content {
+		margin: 0;
+		overflow-x: hidden;
+		padding: 10px 10px 10px 90px;
+		width: auto;
+	}
+	.leftMenu {
+		float: none;
+		padding: 0;
+		width: auto;
+	}
+	.pageContent {
+		border: none;
+		margin: 0;
+		padding: 0;
+	}
+	.panel-body {
+		padding: 10px;
+	}
+}
+@media (min-width: 768px) {
+	body.fixed .stage {
+		margin-left: -375px;
+	}
+}
+@media (min-width: 992px) {
+	body.fixed .stage {
+		margin-left: -485px;
+	}
+}
+@media (min-width: 1200px) {
+	body.fixed .stage {
+		margin-left: -585px;
+	}
+}

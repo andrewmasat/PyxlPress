@@ -1,0 +1,62 @@
+/*
+ *
+ * Plugin: PyxlBlog
+ * Author: Andrew Masat
+ * Description: Blogging plugin built dor PyxlPress
+ * Tags: Blog
+ *  
+ */
+
+
+/* General */
+.PyxlBlog {
+
+}
+.PyxlBlog .widget {
+	box-shadow: 0 1px 3px rgba(0,0,0,0.50);
+	padding: 15px;
+}
+.PyxlBlog .backtrack {
+	margin-bottom: 5px;
+}
+.PyxlBlog .backtrack a {
+	color: #777;
+	font-size: 12px;
+}
+.PyxlBlog .pageContent h4 {
+	font-size: 16px;
+	margin: 0 0 20px;
+}
+
+/* Post List */
+.PyxlBlog .postList .postListHeader {
+	border-bottom: 2px solid #ccc;
+	font-weight: bold;
+	margin: 0;
+	padding: 0 0 5px;
+}
+.PyxlBlog .postList .post {
+	border-bottom: 1px solid #e7eaec;
+	margin: 10px 0;
+	padding: 10px 0;
+}
+.PyxlBlog .postList .post > div {
+	height: 30px;
+}
+
+/* New Post */
+.PyxlBlog #content {
+	height: 400px;
+}
+
+/* Edit Post */
+.PyxlBlog .postInfo .label {
+	position: absolute;
+		right: 15px;
+		top: 14px;
+	padding: 5px 7px;
+}
+.PyxlBlog .postInfo p {
+	font-size: 12px;
+	margin: 2px 0;
+}

@@ -1,0 +1,9 @@
+<form id="submitSettingsPage">
+	<div class="form-group">
+		<p>Would you like to recieve email notifications?</p>
+		<input type="checkbox" id="sendEmail" class="styled"<% if(data.sendEmail == 1) { %> checked<% } %> />
+		<label class="checkbox-inline" for="sendEmail">Yes, send email notifications.</label>
+	</div>
+	<hr />
+	<button type="submit" class="btn btn-success pull-right" id="submitEdit" data-loading-text="Saving...">Save Settings</button>
+</form>

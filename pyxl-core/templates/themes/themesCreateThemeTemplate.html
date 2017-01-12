@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="col-sm-12">
+		<form id="submitNewTheme">
+			<div class="form-group">
+				<div class="row">
+					<div class="col-sm-6">
+						<h3>How to create a theme</h3>
+						<p>When creating a new theme on Pyxlpress, all you need to do is add a theme name and some general information about the theme. Once you create the theme, Pyxlpress will automatically generate the files necessary to activate the theme. You can modify these files as well as add more templates once the initial theme is created.</p>
+						<p>After the theme is created, you can edit it, add more pages and templates, modify the style as well as the JavaScript. If you wish, you can also download the theme, delete it, or re-upload a past backup.</p>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="themeName">Theme Name</label>
+							<input type="text" class="form-control" id="themeName" name="themeName">
+						</div>
+						<div class="form-group">
+							<label for="themeName">Description</label>
+							<textarea id="themeDesc" name="themeDesc" class="form-control"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="themeAuthor">Author</label>
+							<input type="text" class="form-control" id="themeAuthor" name="themeAuthor">
+						</div>
+						<div class="form-group">
+							<label for="themeTags">Tags</label>
+							<input type="text" class="form-control" id="themeTags" name="themeTags" placeholder="Blue, 2 column, modern">
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr />
+			<div class="form-group">
+				<button type="submit" id="submitTheme" class="btn btn-success pull-right" data-loading-text="Saving..." autocomplete="off">Create New Theme</button>
+			</div>
+		</form>
+	</div>
+</div>

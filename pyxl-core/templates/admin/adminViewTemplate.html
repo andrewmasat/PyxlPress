@@ -1,0 +1,6 @@
+<% if (data.needUpdate) { %>
+	<div class="alert <% if (data.isImportant) { %>alert-danger<% } else { %>alert-waning<% } %>"><strong>Update Available:</strong> You currently have <strong>v<%= data.currentVersion %></strong> installed, the latest version available is <strong>v<%= data.latestVersion %></strong>. <a href="admin/update" class="btn btn-danger btn-small">Install now?</a></div>
+<% } %>
+<ul>
+	<li>User Count: <%= data.userCount %></li>
+</ul>
