@@ -108,7 +108,6 @@ define([
 				homeView.render();
 			});
 			
-			Backbone.history.on("route", _trackPageview);
 			Backbone.history.start({
 				pushState: true,
 				hashChange: false,
@@ -119,11 +118,6 @@ define([
 		var getRoot = function() {
 			var url = window.location.pathname.split('/pyxl-core/');
 			return url[0]+'/pyxl-core/';
-		};
-
-		var _trackPageview = function() {
-			var url = Backbone.history.getFragment();
-			ga('send', 'pageview', "/"+url);
 		};
 	return { 
 		initialize: initialize
