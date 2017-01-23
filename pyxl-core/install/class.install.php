@@ -10,7 +10,7 @@ if ($_POST['request'] == 'install') {
 		$settings[$key] = $value;
 	}
 
-	$connect = @new mysqli($setings['dbhost'], $settings['username'], $settings['password'], $settings['dbname']);
+	$connect = @new mysqli($settings['dbhost'], $settings['username'], $settings['password'], $settings['dbname']);
 
 	if ($connect->connect_errno) {
 		$data = array (
