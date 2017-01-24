@@ -38,28 +38,28 @@
 						<div class="form-group">
 							<label for="dbname" class="col-sm-3 control-label">Database Name:</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" id="dbname" name="dbname" value="pixelsh2_dd">
+								<input type="text" class="form-control" id="dbname" name="dbname">
 								<small>The name of the database you want to run PyxlPress in.</small>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="username" class="col-sm-3 control-label">Username:</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" id="username" name="username" value="pixelsh2_dd">
+								<input type="text" class="form-control" id="username" name="username">
 								<small>Your mySQL username</small>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="password" class="col-sm-3 control-label">Password:</label>
 							<div class="col-sm-9">
-								<input type="password" class="form-control" id="password" name="password" value="proxibid4evr">
+								<input type="password" class="form-control" id="password" name="password">
 								<small>...and mySQL password.</small>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="dbhost" class="col-sm-3 control-label">Database Host:</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" id="dbhost" name="dbhost" placeholder="localhost" value="localhost">
+								<input type="text" class="form-control" id="dbhost" name="dbhost" placeholder="localhost">
 								<small>You should be able to get this info from your web host, if <em>localhost</em> does not work.</small>
 							</div>
 						</div>
