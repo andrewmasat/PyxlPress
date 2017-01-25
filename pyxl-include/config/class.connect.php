@@ -9,7 +9,7 @@
 
 // Check if Config exists
 if(!file_exists(realpath(__DIR__ . "/../config.php"))) {
-	$_SESSION['setupUrl'] = $_SERVER['REQUEST_URI'];
+	$_SESSION['setupUrl'] = explode("pyxl-core/", $_SERVER['REQUEST_URI'])[0];
 
 	header( "Location: ".$_SESSION['setupUrl']."pyxl-core/install" );
 	exit();
