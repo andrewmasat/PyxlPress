@@ -6,8 +6,9 @@ define([
 	'models/plugins/plugins',
 	'text!plugins/PyxlBlog/templates/postList.html',
 	'text!plugins/PyxlBlog/templates/editPost.html',
-	'text!plugins/PyxlBlog/templates/postInfo.html'
-	], function($, _, Backbone, Bootstrap, Hooks, PostListPage, PostEditFields, PostInfo){
+	'text!plugins/PyxlBlog/templates/postInfo.html',
+	'text!plugins/PyxlBlog/templates/blog.html'
+	], function($, _, Backbone, Bootstrap, Hooks, PostListPage, PostEditFields, PostInfo, BlogHook){
 
 	'use strict';
 
@@ -25,6 +26,11 @@ define([
 				this.postList();
 			} else if (this.package.page.option === 'edit') {
 				this.postEditPage();
+			}
+		},
+		renderHook: function(options) {
+			if (options[1] === 'blog') {
+				this.blog(options);
 			}
 		},
 		postList: function() {
@@ -98,6 +104,9 @@ define([
 					console.log(data);
 				}
 			});
+		},
+		blog: function() {
+			$('div[data-plugin="blog"]').text('hello');
 		}
 	});
 

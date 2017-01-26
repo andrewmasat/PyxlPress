@@ -3,8 +3,9 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'models/pages/pages'
-	], function($, _, Backbone, Pages) {
+	'models/pages/pages',
+	'models/plugins/pluginPlay'
+	], function($, _, Backbone, Pages, PluginPlay) {
 
 		'use strict';
 
@@ -68,6 +69,33 @@ define([
 						require(['../../pyxl-content/themes/'+data.theme+'/views/indexView'], function (IndexView) {
 							var pageView = new IndexView();
 							pageView.render(data);
+							
+							if (data.pluginHooks.length !== 0) {
+								var plugins = [];
+								var getPlugin = new PluginPlay();
+								getPlugin.urlRoot = window.location.pathname.replace(action, '') + 'pyxl-include/plugins/class.pluginPlay.php';
+
+								$.each(data.pluginHooks, function(i, val) {
+									plugins[i] = val;
+
+									getPlugin.fetch({
+										data: {request: val},
+										processData: true,
+										success: function(model, hook) {
+											if (hook.options) {
+												var folder = hook.options[0];
+												require(['../../pyxl-content/plugins/'+folder+'/views/indexView'], function (pluginIndex) {
+													var pluginView = new pluginIndex();
+
+													pageView.render(data);
+													pluginView.renderHook(hook.options);
+												});
+											}
+										}
+									});
+								});
+								
+							}
 						});
 					}
 

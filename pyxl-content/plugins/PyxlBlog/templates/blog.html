@@ -1,0 +1,9 @@
+Hello!
+
+<% _.each(data, function(num,index) { %>
+	<div>
+		<a href="../plugins/PyxlBlog/edit/<%= data[index].pb_id %>" class="title"><%= data[index].pb_title %></a>
+		<span><%= data[index].pb_author %></span>
+		<span><%= data[index].pb_timestamp %></span>
+	</div>
+<% }); %>

@@ -110,4 +110,11 @@ function pb_post_edit_save($pluginName, $hookData, $connect) {
 	echo json_encode($data);
 }
 
+function get_hook_blog($options, $connect) {
+	$data = array(
+		'options' => $options
+	);
+	echo json_encode($data);
+}
+
 ?>

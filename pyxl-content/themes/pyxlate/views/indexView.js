@@ -3,10 +3,9 @@ define([
 	'underscore',
 	'backbone',
 	'bootstrap',
-	'views/global/pluginPlayView',
 	'text!templates/pyxlate/templates/header.html',
 	'text!templates/pyxlate/templates/footer.html',
-	], function($, _, Backbone, Bootstrap, PluginPlay, Header, Footer){
+	], function($, _, Backbone, Bootstrap, Header, Footer){
 
 	'use strict';
 
@@ -42,9 +41,6 @@ define([
 				that.$el.html(_.template(pageTemplate, {data:that.package}));
 				that.$el.prepend(_.template(Header, {data:that.package}));
 				that.$el.append(_.template(Footer, {data:that.package}));
-
-				var pluginPlay = new PluginPlay();
-				pluginPlay.findPlugin();
 			});
 		}
 	});

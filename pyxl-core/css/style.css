@@ -439,7 +439,7 @@ header {
 
 /* STATUS ALERTS */
 .statusAlerts {
-	height: 70px;
+	height: 60px;
 }
 .statusAlerts ul {
 	list-style: none;

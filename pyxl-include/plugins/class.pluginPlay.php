@@ -37,35 +37,24 @@ while($info = $pluginsActive->fetch_assoc()){
 			if (!in_array($folder, $blacklist) && $folder == $pluginName && $pluginActive) {
 
 				// Get Theme Info
-				$pluginFile = realpath(__DIR__ . "/../../pyxl-content/plugins/".$folder)."/plugin.php";
+				$pluginFile = realpath(__DIR__ . "/../../pyxl-content/plugins/".$folder)."/functions/functions.php";
 				if (file_exists($pluginFile)) {
 					include_once($pluginFile);
+
+					$request = explode(',',$request);
+					$hook = 'get_hook_' . $request[0];
+					
+					if (function_exists($hook)) {
+						array_unshift($request, $folder);
+						$hook($request, $connect);
+					} else {
+						$data = 'Hook Not Found';
+						echo json_encode($data);
+					}
+
 				}
 			}
 		}
 		closedir($handle);
 	}
 }
-
-
-$settingsSql = "SELECT theme FROM settings";
-$themeQuery = $connect->query($settingsSql);
-while($info = $themeQuery->fetch_assoc()){
-	$themeName = $info['theme'];
-}
-
-$templateSql = "SELECT * FROM pages WHERE pageTheme = '$themeName' AND pageFileName = '$request'";
-$permalinkQuery = $connect->query($templateSql);
-while($info = $permalinkQuery->fetch_assoc()){
-	$pageFileName = $info['pageFileName'];
-}
-
-$getFile = realpath(__DIR__ . "/../../pyxl-content/themes/".$themeName."/templates")."/".$pageFileName.".html";
-$file = file_get_contents($getFile);
-
-$start  = strpos($file, '[[');
-$end    = strpos($file, ']]', $start + 2);
-$length = $end - $start;
-$result = substr($file, $start + 2, $length - 2);
-
-echo $result;

@@ -48,7 +48,7 @@ if ($request == 'getPages' && protect($_SESSION['username'], $connect)) {
 		}
 	}
 	// Front page Page requesting
-	$pagesSql = "SELECT * FROM pages WHERE pagePermalink = '$request'";
+	$pagesSql = "SELECT * FROM pages WHERE pageTheme = '$theme' AND pagePermalink = '$request'";
 
 	$pages = $connect->query($pagesSql);
 	$pageResult = $pages->num_rows;
@@ -67,15 +67,41 @@ if ($request == 'getPages' && protect($_SESSION['username'], $connect)) {
 		$pageFileName = $info['pageFileName'];
 	}
 
+	// Check if Plugin Hook is there
+	$getFile = realpath(__DIR__ . "/../../pyxl-content/themes/".$theme."/templates")."/".$pageFileName.".html";
+	$file = file_get_contents($getFile);
+	$pluginHooks = get_string_between($file, 'data-plugin="', '"');
+
+	// Return data
 	$data = array (
 		'pageId' => $pageId,
 		'pagePermalink' => $pagePermalink,
 		'pageAvalible' => $pageAvalible,
 		'pageFileName' => $pageFileName,
-		'theme' => $theme
+		'theme' => $theme,
+		'pluginHooks' => $pluginHooks
 	);
 }
 
 // return results
 $connect->close();
 echo json_encode($data);
+
+
+function get_string_between($str, $startDelimiter, $endDelimiter) {
+  $contents = array();
+  $startDelimiterLength = strlen($startDelimiter);
+  $endDelimiterLength = strlen($endDelimiter);
+  $startFrom = $contentStart = $contentEnd = 0;
+  while (false !== ($contentStart = strpos($str, $startDelimiter, $startFrom))) {
+    $contentStart += $startDelimiterLength;
+    $contentEnd = strpos($str, $endDelimiter, $contentStart);
+    if (false === $contentEnd) {
+      break;
+    }
+    $contents[] = substr($str, $contentStart, $contentEnd - $contentStart);
+    $startFrom = $contentEnd + $endDelimiterLength;
+  }
+
+  return $contents;
+}
