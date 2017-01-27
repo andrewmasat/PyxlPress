@@ -106,7 +106,20 @@ define([
 			});
 		},
 		blog: function() {
-			$('div[data-plugin="blog"]').text('hello');
+			var hookData = {
+				hookType: 'pb_post_list',
+				hookData: '',
+				pluginName: 'PyxlBlog'
+			};
+
+			var hooks = new Hooks({request: "triggerHook"});
+			var action = Backbone.history.getFragment();
+			hooks.urlRoot = window.location.pathname.replace(action, '') + 'pyxl-include/plugins/class.plugins.php';
+			hooks.save(hookData, {
+				success: function(model, data) {
+					$('div[data-plugin="blog"]').html(_.template(BlogHook, {data:data.postList}));
+				}
+			});
 		}
 	});
 

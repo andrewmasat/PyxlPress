@@ -1,9 +1,15 @@
-Hello!
-
-<% _.each(data, function(num,index) { %>
-	<div>
-		<a href="../plugins/PyxlBlog/edit/<%= data[index].pb_id %>" class="title"><%= data[index].pb_title %></a>
-		<span><%= data[index].pb_author %></span>
-		<span><%= data[index].pb_timestamp %></span>
+<div class="row">
+	<div class="col-sm-8">
+		<% _.each(data, function(num,index) { %>
+			<h2><a href="<%= data[index].pb_permalink %>"><%= data[index].pb_title %></a></h2>
+			<small>Created by: <%= data[index].pb_author %> on <%= data[index].pb_timestamp %></small>
+			<div class="entry">
+			<%= data[index].pb_content %>
+			</div>
+		<% }); %>	
 	</div>
-<% }); %>
+	<div class="col-sm-4">
+		
+	</div>
+</div>
+

@@ -17,7 +17,10 @@ require.config({
 		chart: 'libs/chart/chart.min',
 
 		// Template Location
-		templates: '../../pyxl-content/themes/'
+		templates: '../../pyxl-content/themes/',
+
+		// PyxlPress Plugins
+		plugins: '../../pyxl-content/plugins'
 	},
 	urlArgs: "bust=" + (new Date()).getTime()
 });

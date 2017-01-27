@@ -75,6 +75,7 @@ define([
 								var getPlugin = new PluginPlay();
 								getPlugin.urlRoot = window.location.pathname.replace(action, '') + 'pyxl-include/plugins/class.pluginPlay.php';
 
+								pageView.render(data);
 								$.each(data.pluginHooks, function(i, val) {
 									plugins[i] = val;
 
@@ -87,7 +88,6 @@ define([
 												require(['../../pyxl-content/plugins/'+folder+'/views/indexView'], function (pluginIndex) {
 													var pluginView = new pluginIndex();
 
-													pageView.render(data);
 													pluginView.renderHook(hook.options);
 												});
 											}

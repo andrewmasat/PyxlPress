@@ -9,18 +9,20 @@
 
 // Includes
 include_once('../config/class.connect.php');
+include_once('../admin/class.protect.php');
 include_once('class.pluginHooks.php');
 
-// Get username
-if (isset($_SESSION['username'])) {
+//  Get Request
+if (isset($_GET['request'])) {
+	$request = $_GET['request'];
+} else {
+	$data = json_decode(file_get_contents('php://input'));
+	$request = $data->{'request'};
+}
 
+// Get username
+if (isset($_SESSION['username']) && $request != 'triggerHook') {
 	$username = $connect->real_escape_string($_SESSION['username']);
-	if (isset($_GET['request'])) {
-		$request = $_GET['request'];
-	} else {
-		$data = json_decode(file_get_contents('php://input'));
-		$request = $data->{'request'};
-	}
 
 	if ($request == 'getPluginList') {
 		$data = array();
@@ -171,11 +173,15 @@ if (isset($_SESSION['username'])) {
 		);
 		echo json_encode($data);
 	}
-
-	if ($request == 'triggerHook') {
+} else if ($request == 'triggerHook') {
 		$hookData = $data->{'hookData'};
 		$hookType = $data->{'hookType'};
 		$pluginName = $data->{'pluginName'};
+		$areYouSecure = false;
+
+		if (isset($_SESSION['username'])) {
+			$areYouSecure = protect($_SESSION['username'], $connect);
+		}
 
 		$pluginFile = realpath(__DIR__ . "/../../pyxl-content/plugins/".$pluginName)."/functions/functions.php";
 		if (file_exists($pluginFile)) {
@@ -183,9 +189,8 @@ if (isset($_SESSION['username'])) {
 			include_once($pluginFile);
 		}
 		if (function_exists($hookType)) {
-			$hookType($pluginName, $hookData, $connect);
+			$hookType($pluginName, $hookData, $areYouSecure, $connect);
 		}
-	}
 } else {
 	$data = array(
 		'loggedin' => 'false'
