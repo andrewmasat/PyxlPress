@@ -26,8 +26,8 @@ function pb_post_list($pluginName, $hookData, $secure, $connect) {
 			'pb_permalink' => $info['pb_permalink'],
 			'pb_status' => $info['pb_status'],
 			'pb_remove' => $info['pb_remove'],
-			'pb_update' => date('m/d/y g:i A', strtotime($info['pb_update'])),
-			'pb_timestamp' => date('m/d/y g:i A', strtotime($info['pb_timestamp']))
+			'pb_update' => siteDateTime($info['pb_update'], $connect),
+			'pb_timestamp' => siteDateTime($info['pb_timestamp'], $connect)
 		);
 	}
 
@@ -89,9 +89,9 @@ function pb_post_edit_get($pluginName, $hookData, $secure, $connect) {
 			'pb_id' => $pb_id,
 			'pb_permalink' => $pb_permalink,
 			'pb_status' => $pb_status,
-			'pb_timestamp' => date('m/d/y g:i A', strtotime($pb_timestamp)),
+			'pb_timestamp' => siteDateTime($pb_timestamp, $connect),
 			'pb_title' => $pb_title,
-			'pb_update' => date('m/d/y g:i A', strtotime($pb_update))
+			'pb_update' => siteDateTime($pb_update, $connect)
 		);
 	} else {
 		$data = array(

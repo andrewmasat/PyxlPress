@@ -25,4 +25,6 @@ if ($connect->connect_error) {
 	trigger_error("Database connection failed: " . $connect->connect_error, E_USER_ERROR);
 }
 
+include_once(realpath(__DIR__ . '/../general/class.time.php'));
+
 session_start();

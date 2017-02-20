@@ -17,6 +17,4 @@
 			$theme = $info['theme'];
 		}
 	}
-
-	date_default_timezone_set($siteTimezone);
 ?>

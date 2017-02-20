@@ -81,11 +81,14 @@ if (protect($_SESSION['username'], $connect)) {
 			$fixedWidth = $info['fixedWidth'];
 			$logLogins = $info['logLogins'];
 			$siteName = $info['siteName'];
+			$siteTimeFormat = $info['siteTimeFormat'];
 			$siteTimezone = $info['siteTimezone'];
 			$siteUrl = $info['siteUrl'];
 			$timeLimit = $info['timeLimit'];
 			$version = $info['version'];
 		}
+
+		$siteCurrentTime = siteDateTime('NOW', $connect);
 
 		$data = array (
 			'allowRegister' => $allowRegister,
@@ -93,6 +96,8 @@ if (protect($_SESSION['username'], $connect)) {
 			'fixedWidth' => $fixedWidth,
 			'logLogins' => $logLogins,
 			'siteName' => $siteName,
+			'siteCurrentTime' => $siteCurrentTime,
+			'siteTimeFormat' => $siteTimeFormat,
 			'siteTimezone' => $siteTimezone,
 			'siteUrl' => $siteUrl,
 			'timeLimit' => $timeLimit,
@@ -106,15 +111,16 @@ if (protect($_SESSION['username'], $connect)) {
 		$fixedWidth = $connect->real_escape_string($data->{'fixedWidth'});
 		$logLogins = $connect->real_escape_string($data->{'logLogins'});
 		$siteName = $connect->real_escape_string($data->{'siteName'});
+		$siteTimeFormat = $connect->real_escape_string($data->{'siteTimeFormat'});
 		$siteTimezone = $connect->real_escape_string($data->{'siteTimezone'});
 		$siteUrl = $connect->real_escape_string($data->{'siteUrl'});
 		$timeLimit = $connect->real_escape_string($data->{'timeLimit'});
 
-		$insertSql = "UPDATE settings SET allowRegister = '$allowRegister', debug = '$debug', fixedWidth = '$fixedWidth', logLogins = '$logLogins', siteName = '$siteName', siteTimezone = '$siteTimezone', siteUrl = '$siteUrl', timeLimit = '$timeLimit'";
+		$insertSql = "UPDATE settings SET allowRegister = '$allowRegister', debug = '$debug', fixedWidth = '$fixedWidth', logLogins = '$logLogins', siteName = '$siteName', siteTimeFormat = '$siteTimeFormat', siteTimezone = '$siteTimezone', siteUrl = '$siteUrl', timeLimit = '$timeLimit'";
 		$connect->query($insertSql);
 
 		// Log Settings Update
-		logThis('UPDATE_SETTINGS',$username.'/'.$allowRegister.'/'.$debug.'/'.$fixedWidth.'/'.$logLogins.'/'.$siteName.'/'.$siteTimezone.'/'.$siteUrl.'/'.$timeLimit, $connect);
+		logThis('UPDATE_SETTINGS',$username.'/'.$allowRegister.'/'.$debug.'/'.$fixedWidth.'/'.$logLogins.'/'.$siteName.'/'.$siteTimeFormat.'/'.$siteTimezone.'/'.$siteUrl.'/'.$timeLimit, $connect);
 
 		$data = array(
 			'saveSettings' => 'true'

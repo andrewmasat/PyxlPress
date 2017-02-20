@@ -9,19 +9,34 @@
 				<label>Site Url:</label>
 				<input type="text" class="form-control" id="siteUrl" name="siteUrl" placeholder="Site Url" value="<%= data.siteUrl %>">
 			</div>
+			<hr />
 			<div class="form-group">
-				<label>Timezone:</label>
-				<select class="form-control" id="siteTimezone" name="siteTimezone">
-					<option value="America/New_York" <% if(data.siteTimezone == 'America/New_York') { %>selected<% } %>>Eastern</option>
-					<option value="America/Chicago" <% if(data.siteTimezone == 'America/Chicago') { %>selected<% } %>>Central</option>
-					<option value="America/Denver" <% if(data.siteTimezone == 'America/Denver') { %>selected<% } %>>Mountain</option>
-					<option value="America/Phoenix" <% if(data.siteTimezone == 'America/Phoenix') { %>selected<% } %>>Mountain no DST</option>
-					<option value="America/Los_Angeles" <% if(data.siteTimezone == 'America/Los_Angeles') { %>selected<% } %>>Pacific</option>
-					<option value="America/Anchorage" <% if(data.siteTimezone == 'America/Anchorage') { %>selected<% } %>>Alaska</option>
-					<option value="America/Adak" <% if(data.siteTimezone == 'America/Adak') { %>selected<% } %>>Hawaii</option>
-					<option value="America/Honolulu" <% if(data.siteTimezone == 'America/Honolulu') { %>selected<% } %>>Hawaii no DST</option>
-				</select>
+				<div class="row">
+					<div class="col-sm-6">
+						<label>Date/Time Format:</label>
+						<input type="text" class="form-control" name="siteTimeFormat" value="<%= data.siteTimeFormat %>" />
+					</div>
+					<div class="col-sm-6">
+						<label>Timezone:</label>
+						<select class="form-control" id="siteTimezone" name="siteTimezone">
+							<option value="America/New_York" <% if(data.siteTimezone == 'America/New_York') { %>selected<% } %>>Eastern</option>
+							<option value="America/Chicago" <% if(data.siteTimezone == 'America/Chicago') { %>selected<% } %>>Central</option>
+							<option value="America/Denver" <% if(data.siteTimezone == 'America/Denver') { %>selected<% } %>>Mountain</option>
+							<option value="America/Phoenix" <% if(data.siteTimezone == 'America/Phoenix') { %>selected<% } %>>Mountain no DST</option>
+							<option value="America/Los_Angeles" <% if(data.siteTimezone == 'America/Los_Angeles') { %>selected<% } %>>Pacific</option>
+							<option value="America/Anchorage" <% if(data.siteTimezone == 'America/Anchorage') { %>selected<% } %>>Alaska</option>
+							<option value="America/Adak" <% if(data.siteTimezone == 'America/Adak') { %>selected<% } %>>Hawaii</option>
+							<option value="America/Honolulu" <% if(data.siteTimezone == 'America/Honolulu') { %>selected<% } %>>Hawaii no DST</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 siteTime">
+						Current time: <%= data.siteCurrentTime %>
+					</div>
+				</div>
 			</div>
+			<hr />
 			<div class="form-group">
 				<label>Session Time:</label>
 				<input type="text" class="form-control" id="timeLimit" name="timeLimit" placeholder="Default: 30 minutes" value="<%= data.timeLimit %>">

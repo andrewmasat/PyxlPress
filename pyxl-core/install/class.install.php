@@ -51,6 +51,7 @@ if ($_POST['request'] == 'install') {
 												siteName varchar(255) NOT NULL,
 												siteUrl varchar(255) NOT NULL,
 												siteEmail varchar(255) NOT NULL,
+												siteTimeFormat varchar(255) NOT NULL,
 												siteTimezone varchar(255) NOT NULL,
 												version varchar(255) NOT NULL,
 												theme varchar(255) NOT NULL,
@@ -179,8 +180,8 @@ fwrite($fp, '<?php
 	$siteUrl = $_POST['siteUrl'];
 	$siteTimezone = $_POST['siteTimezone'];
 
-	$insertSql = "INSERT INTO settings (siteName, siteUrl, siteEmail, siteTimezone, version, theme, allowRegister, timeLimit, logLogins, fixedWidth, debug)
-								VALUES ('$siteName', '$siteUrl', '$siteEmail', '$siteTimezone', '$version', 'pyxlate', 1, 30, 0, 0, 0);";
+	$insertSql = "INSERT INTO settings (siteName, siteUrl, siteEmail, siteTimeFormat, siteTimezone, version, theme, allowRegister, timeLimit, logLogins, fixedWidth, debug)
+								VALUES ('$siteName', '$siteUrl', '$siteEmail', 'm/d/y g:i A', '$siteTimezone', '$version', 'pyxlate', 1, 30, 0, 0, 0);";
 	$connect->query($insertSql);
 
 	$data = array(
