@@ -1,15 +1,18 @@
-<div class="row">
-	<div class="col-sm-8">
-		<% _.each(data, function(num,index) { %>
-			<h2><a href="<%= data[index].pb_permalink %>"><%= data[index].pb_title %></a></h2>
-			<small>Created by: <%= data[index].pb_author %> on <%= data[index].pb_timestamp %></small>
-			<div class="entry">
-			<%= data[index].pb_content %>
-			</div>
-		<% }); %>	
-	</div>
-	<div class="col-sm-4">
-		
+<div class="container PyxlBlog">
+	<div class="row">
+		<div class="col-sm-8">
+			<% _.each(data, function(num,index) { %>
+				<div class="entry">
+					<h2><a href="<%= data[index].pb_permalink %>"><%= data[index].pb_title %></a></h2>
+					<small>Created by: <%= data[index].pb_author %> on <%= data[index].pb_timestamp %></small>
+					<div class="content">
+					<%= data[index].pb_content %>
+					</div>
+				</div>
+			<% }); %>	
+		</div>
+		<div class="col-sm-4">
+			
+		</div>
 	</div>
 </div>
-

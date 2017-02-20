@@ -13,7 +13,7 @@ function pb_permalink($string) {
 }
 
 function pb_post_list($pluginName, $hookData, $secure, $connect) {
-	$query = "SELECT * FROM pb_posts";
+	$query = "SELECT * FROM pb_posts ORDER BY pb_id DESC";
 	$posts = $connect->query($query);
 
 	$postList = array();
