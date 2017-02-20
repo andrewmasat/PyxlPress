@@ -87,6 +87,21 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label for="siteTimeZone" class="col-sm-3 control-label">Timezone:</label>
+							<div class="col-sm-9">
+								<select class="form-control" id="siteTimezone" name="siteTimezone">
+									<option value="America/New_York">Eastern</option>
+									<option value="America/Chicago" selected>Central</option>
+									<option value="America/Denver">Mountain</option>
+									<option value="America/Phoenix">Mountain no DST</option>
+									<option value="America/Los_Angeles">Pacific</option>
+									<option value="America/Anchorage">Alaska</option>
+									<option value="America/Adak">Hawaii</option>
+									<option value="America/Honolulu">Hawaii no DST</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
 							<label for="siteUrl" class="col-sm-3 control-label">Site Address:</label>
 							<div class="col-sm-9">
 								<input type="text" class="form-control" id="siteUrl" name="siteUrl">

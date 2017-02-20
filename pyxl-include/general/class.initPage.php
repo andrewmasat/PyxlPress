@@ -10,10 +10,13 @@
 		$fixedWidth = $info['fixedWidth'];
 		$siteName = $info['siteName'];
 		$siteUrl = $info['siteUrl'];
+		$siteTimezone = $info['siteTimezone'];
 		if (isset($_SESSION['previewTheme'])) {
 			$theme = $_SESSION['previewTheme'];
 		} else {
 			$theme = $info['theme'];
 		}
 	}
+
+	date_default_timezone_set($siteTimezone);
 ?>

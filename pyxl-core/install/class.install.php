@@ -51,6 +51,7 @@ if ($_POST['request'] == 'install') {
 												siteName varchar(255) NOT NULL,
 												siteUrl varchar(255) NOT NULL,
 												siteEmail varchar(255) NOT NULL,
+												siteTimezone varchar(255) NOT NULL,
 												version varchar(255) NOT NULL,
 												theme varchar(255) NOT NULL,
 												allowRegister int(1) NOT NULL,
@@ -154,9 +155,6 @@ fwrite($fp, '<?php
 	$attemptLimit = "5"; // Default: 5 Attempts
 	$attemptLimitLockout = "300"; // Default: 5 Minutes
 
-	// Timezone
-	$timezone = "America/Chicago";
-
 ?>');
 
 			fclose($fp);
@@ -179,9 +177,10 @@ fwrite($fp, '<?php
 	$siteName = $_POST['siteName'];
 	$siteEmail = $_POST['siteEmail'];
 	$siteUrl = $_POST['siteUrl'];
+	$siteTimezone = $_POST['siteTimezone'];
 
-	$insertSql = "INSERT INTO settings (siteName, siteUrl, siteEmail, version, theme, allowRegister, timeLimit, logLogins, fixedWidth, debug)
-								VALUES ('$siteName', '$siteUrl', '$siteEmail', '$version', 'pyxlate', 1, 30, 0, 0, 0);";
+	$insertSql = "INSERT INTO settings (siteName, siteUrl, siteEmail, siteTimezone, version, theme, allowRegister, timeLimit, logLogins, fixedWidth, debug)
+								VALUES ('$siteName', '$siteUrl', '$siteEmail', '$siteTimezone', '$version', 'pyxlate', 1, 30, 0, 0, 0);";
 	$connect->query($insertSql);
 
 	$data = array(

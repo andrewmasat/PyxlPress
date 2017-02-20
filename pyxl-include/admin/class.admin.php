@@ -81,6 +81,7 @@ if (protect($_SESSION['username'], $connect)) {
 			$fixedWidth = $info['fixedWidth'];
 			$logLogins = $info['logLogins'];
 			$siteName = $info['siteName'];
+			$siteTimezone = $info['siteTimezone'];
 			$siteUrl = $info['siteUrl'];
 			$timeLimit = $info['timeLimit'];
 			$version = $info['version'];
@@ -92,6 +93,7 @@ if (protect($_SESSION['username'], $connect)) {
 			'fixedWidth' => $fixedWidth,
 			'logLogins' => $logLogins,
 			'siteName' => $siteName,
+			'siteTimezone' => $siteTimezone,
 			'siteUrl' => $siteUrl,
 			'timeLimit' => $timeLimit,
 			'version' => $version
@@ -104,14 +106,15 @@ if (protect($_SESSION['username'], $connect)) {
 		$fixedWidth = $connect->real_escape_string($data->{'fixedWidth'});
 		$logLogins = $connect->real_escape_string($data->{'logLogins'});
 		$siteName = $connect->real_escape_string($data->{'siteName'});
+		$siteTimezone = $connect->real_escape_string($data->{'siteTimezone'});
 		$siteUrl = $connect->real_escape_string($data->{'siteUrl'});
 		$timeLimit = $connect->real_escape_string($data->{'timeLimit'});
 
-		$insertSql = "UPDATE settings SET allowRegister = '$allowRegister', debug = '$debug', fixedWidth = '$fixedWidth', logLogins = '$logLogins', siteName = '$siteName', siteUrl = '$siteUrl', timeLimit = '$timeLimit'";
+		$insertSql = "UPDATE settings SET allowRegister = '$allowRegister', debug = '$debug', fixedWidth = '$fixedWidth', logLogins = '$logLogins', siteName = '$siteName', siteTimezone = '$siteTimezone', siteUrl = '$siteUrl', timeLimit = '$timeLimit'";
 		$connect->query($insertSql);
 
 		// Log Settings Update
-		logThis('UPDATE_SETTINGS',$username.'/'.$allowRegister.'/'.$debug.'/'.$fixedWidth.'/'.$logLogins.'/'.$siteName.'/'.$siteUrl.'/'.$timeLimit, $connect);
+		logThis('UPDATE_SETTINGS',$username.'/'.$allowRegister.'/'.$debug.'/'.$fixedWidth.'/'.$logLogins.'/'.$siteName.'/'.$siteTimezone.'/'.$siteUrl.'/'.$timeLimit, $connect);
 
 		$data = array(
 			'saveSettings' => 'true'

@@ -18,7 +18,6 @@ if(!file_exists(realpath(__DIR__ . "/../config.php"))) {
 	include_once(realpath(__DIR__ . "/../config.php"));
 }
 
-date_default_timezone_set($timezone);
 $connect = new mysqli($host, $dbUser, $dbPass, $dbName);
  
 // check connection
