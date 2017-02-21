@@ -32,7 +32,7 @@ if (isset($_SESSION['username'])) {
 			$interval = $date->diff($match_date);
 
 			if ($interval->days == 0) {
-				$timestamp = date('g:i a', strtotime($info['timestamp']));
+				$timestamp = siteCustomTime($info['timestamp'], 'g:i a', $connect);
 			} else if ($interval->days == 1) {
 				if($interval->invert == 1) {
 					$timestamp = 'Yesterday';

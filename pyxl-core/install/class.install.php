@@ -181,7 +181,7 @@ fwrite($fp, '<?php
 	$siteTimezone = $_POST['siteTimezone'];
 
 	$insertSql = "INSERT INTO settings (siteName, siteUrl, siteEmail, siteTimeFormat, siteTimezone, version, theme, allowRegister, timeLimit, logLogins, fixedWidth, debug)
-								VALUES ('$siteName', '$siteUrl', '$siteEmail', 'm/d/y g:i A', '$siteTimezone', '$version', 'pyxlate', 1, 30, 0, 0, 0);";
+								VALUES ('$siteName', '$siteUrl', '$siteEmail', 'm/d/y g:i a', '$siteTimezone', '$version', 'pyxlate', 1, 30, 0, 0, 0);";
 	$connect->query($insertSql);
 
 	$data = array(

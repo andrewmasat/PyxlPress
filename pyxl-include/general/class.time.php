@@ -20,3 +20,18 @@ function siteDateTime($timestamp, $connect) {
 		return "NO_UPDATE";
 	}
 }
+
+function siteCustomTime($timestamp, $format, $connect) {
+	// Set Timezone
+	$settingsSql = "SELECT * FROM settings";
+
+	$envProp = $connect->query($settingsSql);
+	while($info = $envProp->fetch_assoc()){
+		$siteTimezone = $info['siteTimezone'];
+	}
+
+	$d = new DateTime($timestamp);
+	$d->setTimeZone(new DateTimeZone($siteTimezone));
+
+	return $d->format($format);
+}

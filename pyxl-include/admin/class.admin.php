@@ -133,7 +133,7 @@ if (protect($_SESSION['username'], $connect)) {
 		$data = array();
 		while($info = $userRecordSet->fetch_assoc()){
 			$data[] = array(
-				'createDate' => date('m/d/y g:i a', strtotime($info['createDate'])),
+				'createDate' => siteDateTime($info['createDate'], $connect),
 				'disabled' => $info['disabled'],
 				'displayName' => $info['displayName'],
 				'email' => $info['email'],
@@ -153,12 +153,12 @@ if (protect($_SESSION['username'], $connect)) {
 
 		while($info = $userRecordSet->fetch_assoc()){
 			$avatar = $info['avatar'];
-			$createDate = date('m/d/y g:i a', strtotime($info['createDate']));
+			$createDate = siteDateTime($info['createDate'], $connect);
 			$disabled = $info['disabled'];
 			$displayName = $info['displayName'];
 			$email = $info['email'];
 			$level = $info['level'];
-			$loginAttempt = date('m/d/y g:i a', strtotime($info['loginAttemptDate']));
+			$loginAttempt = siteDateTime($info['loginAttemptDate'], $connect);
 			$role = $info['roleName'];
 			$userId = $info['userId'];
 			$username = $info['username'];
