@@ -4,7 +4,7 @@
 <% } else if(data.pb_status == 1) { %>
 	<span class="label label-success">Published</span>
 <% } %>
-<% if(data.pb_update !== '12/31/69 6:00 PM') { %>
+<% if(data.pb_update !== 'NO_UPDATE') { %>
 	<p>Last Updated: <span class="pull-right"><%= data.pb_update %></span></p>
 <% } %>
 <p>Post Created: <span class="pull-right"><%= data.pb_timestamp %></span></p>

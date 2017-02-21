@@ -99,10 +99,12 @@ define([
 				pluginName: 'PyxlBlog'
 			};
 
+			var submitBtn = $('#submitPostEdit').button('loading');
+
 			var hooks = new Hooks({request: "triggerHook"});
 			hooks.save(hookData, {
 				success: function(model, data) {
-					console.log(data);
+					submitBtn.button('reset');
 				}
 			});
 		},
@@ -113,9 +115,12 @@ define([
 				pluginName: 'PyxlBlog'
 			};
 
+			var submitBtn = $('#deletePostEdit').button('loading');
+
 			var hooks = new Hooks({request: "triggerHook"});
 			hooks.save(hookData, {
 				success: function(model, data) {
+					submitBtn.button('reset');
 					Backbone.history.navigate('plugins/PyxlBlog', {trigger:true});
 				}
 			});
