@@ -27,13 +27,18 @@
 					<h4>Modify</h4>
 					<div class="form-group">
 						<label>Status</label>
-						<select class="form-control input-sm">
-							<option>Draft</option>
-							<option>Publish</option>
+						<select class="form-control input-sm" id="status" name="status">
+							<option value="0">Draft</option>
+							<option value="1">Publish</option>
 						</select>
 					</div>
 					<div class="form-group">
 						<button type="submit" id="submitPostEdit" class="btn btn-success btn-block" data-loading-text="Updating...">Update Post</button>
+					</div>
+					<hr />
+					<h5>Delete Post</h5>
+					<div class="form-group">
+						<button type="button" id="deletePostEdit" class="btn btn-danger btn-block" data-loading-text="Deleteing...">Delete Post</button>
 					</div>
 				</div>
 			</div>

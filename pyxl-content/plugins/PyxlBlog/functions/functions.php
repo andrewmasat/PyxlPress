@@ -51,7 +51,7 @@ function pb_post_save($pluginName, $hookData, $secure, $connect) {
 		$permalink = $siteUrl . '/blog/' . pb_permalink($title);
 
 		$query = "INSERT INTO pb_posts (pb_author, pb_title, pb_content, pb_permalink, pb_status, pb_remove)
-							VALUES ('$author','$title', '$content', '$permalink', 1, 0)";
+							VALUES ('$author','$title', '$content', '$permalink', 0, 0)";
 		$connect->query($query);
 		$id = $connect->insert_id;
 
@@ -109,12 +109,30 @@ function pb_post_edit_save($pluginName, $hookData, $secure, $connect) {
 		$author = $_SESSION['username'];
 		$id = $connect->real_escape_string($hookData['id']);
 		$content = $connect->real_escape_string($hookData['content']);
-		$title = $connect->real_escape_string($hookData['title']);
 		$siteUrl = $connect->real_escape_string($hookData['siteUrl']);
+		$status = $connect->real_escape_string($hookData['status']);
+		$title = $connect->real_escape_string($hookData['title']);
 
 		$permalink = $siteUrl . '/blog/' . pb_permalink($title);
 
-		$query = "UPDATE pb_posts SET pb_title = '$title', pb_content = '$content', pb_permalink = '$permalink' WHERE pb_id = $id";
+		$query = "UPDATE pb_posts SET pb_title = '$title', pb_content = '$content', pb_permalink = '$permalink', pb_status = '$status' WHERE pb_id = $id";
+		$connect->query($query);
+
+		$data = array(
+			'pluginName' => $pluginName,
+			'hookData' => $hookData
+		);
+	} else {
+		$data = array(
+			'secure' => $secure
+		);
+	}
+	echo json_encode($data);
+}
+
+function pb_post_delete($pluginName, $hookData, $secure, $connect) {
+	if ($secure) {
+		$query = "DELETE FROM pb_posts WHERE pb_id = '$hookData'";
 		$connect->query($query);
 
 		$data = array(

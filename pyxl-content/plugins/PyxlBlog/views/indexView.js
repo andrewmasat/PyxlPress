@@ -17,7 +17,8 @@ define([
 		el: $('.stage'),
 		events: {
 			'click #submitPost': 'submitPostNew',
-			'click #submitPostEdit': 'submitPostEdit'
+			'click #submitPostEdit': 'submitPostEdit',
+			'click #deletePostEdit': 'deletePostEdit'
 		},
 		render: function(state) {
 			this.package = state;
@@ -102,6 +103,20 @@ define([
 			hooks.save(hookData, {
 				success: function(model, data) {
 					console.log(data);
+				}
+			});
+		},
+		deletePostEdit: function() {
+			var hookData = {
+				hookType: 'pb_post_delete',
+				hookData: this.package.page.id,
+				pluginName: 'PyxlBlog'
+			};
+
+			var hooks = new Hooks({request: "triggerHook"});
+			hooks.save(hookData, {
+				success: function(model, data) {
+					Backbone.history.navigate('plugins/PyxlBlog', {trigger:true});
 				}
 			});
 		},
