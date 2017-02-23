@@ -1,8 +1,9 @@
 <?php
 
-function siteDateTime($timestamp, $connect) {
+function siteDateTime($timestamp, $connect, $siteFirst = true) {
 
 	if ($timestamp !== NULL) {
+
 		// Set Timezone
 		$settingsSql = "SELECT * FROM settings";
 
@@ -12,12 +13,22 @@ function siteDateTime($timestamp, $connect) {
 			$siteTimeFormat = $info['siteTimeFormat'];
 		}
 
+		if (isset($_SESSION['username']) && !$siteFirst) {
+			$username = $_SESSION['username'];
+			$settingsSql = "SELECT timezone FROM users WHERE username = '$username'";
+
+			$envProp = $connect->query($settingsSql);
+			while($info = $envProp->fetch_assoc()){
+				$siteTimezone = $info['timezone'];
+			}
+		}
+
 		$d = new DateTime($timestamp);
 		$d->setTimeZone(new DateTimeZone($siteTimezone));
 
 		return $d->format($siteTimeFormat);
 	} else {
-		return "NO_UPDATE";
+		return "NO_TIMESTAMP";
 	}
 }
 

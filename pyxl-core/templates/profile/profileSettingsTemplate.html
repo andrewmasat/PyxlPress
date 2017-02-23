@@ -1,8 +1,27 @@
 <form id="submitSettingsPage">
-	<div class="form-group">
-		<p>Would you like to recieve email notifications?</p>
-		<input type="checkbox" id="sendEmail" class="styled"<% if(data.sendEmail == 1) { %> checked<% } %> />
-		<label class="checkbox-inline" for="sendEmail">Yes, send email notifications.</label>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<h4>Would you like to receive email notifications?</h4>
+				<input type="checkbox" id="sendEmail" class="styled"<% if(data.sendEmail == 1) { %> checked<% } %> />
+				<label class="checkbox-inline" for="sendEmail">Yes, send email notifications.</label>
+			</div>
+			<hr />
+			<div class="form-group">
+				<h4>Set your timezone.</h4>
+				<select class="form-control" id="timezone" name="timezone">
+					<option value="America/New_York" <% if(data.timezone == 'America/New_York') { %>selected<% } %>>Eastern</option>
+					<option value="America/Chicago" <% if(data.timezone == 'America/Chicago') { %>selected<% } %>>Central</option>
+					<option value="America/Denver" <% if(data.timezone == 'America/Denver') { %>selected<% } %>>Mountain</option>
+					<option value="America/Phoenix" <% if(data.timezone == 'America/Phoenix') { %>selected<% } %>>Mountain no DST</option>
+					<option value="America/Los_Angeles" <% if(data.timezone == 'America/Los_Angeles') { %>selected<% } %>>Pacific</option>
+					<option value="America/Anchorage" <% if(data.timezone == 'America/Anchorage') { %>selected<% } %>>Alaska</option>
+					<option value="America/Adak" <% if(data.timezone == 'America/Adak') { %>selected<% } %>>Hawaii</option>
+					<option value="America/Honolulu" <% if(data.timezone == 'America/Honolulu') { %>selected<% } %>>Hawaii no DST</option>
+				</select>
+				<p class="help-block">This will reflect on the entire website when you are logged in.</p>
+			</div>
+		</div>
 	</div>
 	<hr />
 	<button type="submit" class="btn btn-success pull-right" id="submitEdit" data-loading-text="Saving...">Save Settings</button>

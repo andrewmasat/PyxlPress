@@ -46,14 +46,14 @@
 
 	/* Sidebar */
 	.sidebar {
-		width: 80px;
+		width: 40px;
 	}
 	.sidebar .pages ul li a {
 		overflow: hidden;
 		white-space: nowrap;
 	}
 	.sidebar .pages ul li a i {
-		margin: 0 32px 0 18px;
+		margin: 0 10px 0 0;
 	}
 
 	/* Content */

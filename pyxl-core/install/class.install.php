@@ -88,6 +88,7 @@ if ($_POST['request'] == 'install') {
 												verified int(1) NOT NULL,
 												email varchar(190) NOT NULL,
 												sendEmail int(1) NOT NULL,
+												timezone varchar(255) NOT NULL,
 												displayName varchar(50) DEFAULT NULL,
 												avatar varchar(255) DEFAULT NULL,
 												disabled int(11) NOT NULL,
@@ -199,8 +200,8 @@ fwrite($fp, '<?php
 	$passwordSalt = $password . $salt;
 	$passwordHash = hash("sha256", $passwordSalt);
 
-	$newUserSql = "INSERT INTO users (username,password,salt,level,verified,email,sendEmail,displayName,loginAttemptDate,disabled) 
-									VALUES ('$username','$passwordHash','$salt',3,1,'$email',1,'$username',NULL,0)";
+	$newUserSql = "INSERT INTO users (username,password,salt,level,verified,email,sendEmail,timezone,displayName,loginAttemptDate,disabled) 
+									VALUES ('$username','$passwordHash','$salt',3,1,'$email',1,'America/Chicago','$username',NULL,0)";
 	$connect->query($newUserSql);
 
 	$data = array (

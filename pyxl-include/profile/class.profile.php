@@ -26,6 +26,7 @@ if (isset($_SESSION['username'])) {
 			$username = $info['username'];
 			$email = $info['email'];
 			$sendEmail = $info['sendEmail'];
+			$timezone = $info['timezone'];
 			$verified = $info['verified'];
 		}
 		
@@ -35,6 +36,7 @@ if (isset($_SESSION['username'])) {
 			'username' => $username,
 			'email' => $email,
 			'sendEmail' => $sendEmail,
+			'timezone' => $timezone,
 			'verified' => $verified
 		);
 		
@@ -87,8 +89,9 @@ if (isset($_SESSION['username'])) {
 		}
 	} else if ($request == 'saveSettings') {
 		$sendEmail = $connect->real_escape_string($data->{'sendEmail'});
+		$timezone = $connect->real_escape_string($data->{'timezone'});
 
-		$insertSql = "UPDATE users SET sendEmail = '$sendEmail' WHERE username = '$username'";
+		$insertSql = "UPDATE users SET sendEmail = '$sendEmail', timezone = '$timezone' WHERE username = '$username'";
 		$connect->query($insertSql);
 
 		$data = array(

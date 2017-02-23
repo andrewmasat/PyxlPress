@@ -219,6 +219,8 @@ define([
 			$(':checkbox').each(function() {
 				if(!$(this).is(':checked')) {
 					settingData.sendEmail = '0';
+				} else {
+					settingData.sendEmail = '1';
 				}
 			});
 
