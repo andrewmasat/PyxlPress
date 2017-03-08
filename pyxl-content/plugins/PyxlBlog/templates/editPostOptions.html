@@ -1,0 +1,16 @@
+<h4>Modify</h4>
+<div class="form-group">
+	<label>Status</label>
+	<select class="form-control input-sm" id="status" name="status">
+		<option value="0"<% if(data.pb_status === '0'){ %> selected<% } %>>Draft</option>
+		<option value="1"<% if(data.pb_status === '1'){ %> selected<% } %>>Publish</option>
+	</select>
+</div>
+<div class="form-group">
+	<button type="submit" id="submitPostEdit" class="btn btn-success btn-block" data-loading-text="Saving Post...">Update Post</button>
+</div>
+<hr />
+<h5>Delete Post</h5>
+<div class="form-group">
+	<button type="button" id="deletePostEdit" class="btn btn-danger btn-block" data-loading-text="Deleteing Post...">Delete Post</button>
+</div>

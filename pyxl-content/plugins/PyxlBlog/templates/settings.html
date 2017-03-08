@@ -1,1 +1,20 @@
-settings
+<link rel="stylesheet" type="text/css" href="../../../pyxl-content/plugins/PyxlBlog/css/style.css" />
+
+<div class="row">
+	<form id="submitBlogSetting">
+		<div class="col-sm-6">
+			<div class="panel pageContent">
+				<div class="panel-body">
+					<div class="form-group">
+						<label>Blog Page:</label>
+						<input type="text" class="form-control" id="blogLocation" name="blogLocation" placeholder="blog" value="<%= data.blogLocation %>">
+						<p class="help-block">Type the title of the page your blog is on.</p>
+					</div>
+					<div class="form-group">
+						<button type="submit" id="submitPost" class="btn btn-success btn-block" data-loading-text="Publishing...">Publish Post</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

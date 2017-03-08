@@ -107,16 +107,25 @@ function pb_post_edit_save($pluginName, $hookData, $secure, $connect) {
 		$hookData = $hookDataArr->getArrayCopy();
 
 		$author = $_SESSION['username'];
-		$id = $connect->real_escape_string($hookData['id']);
-		$content = $connect->real_escape_string($hookData['content']);
-		$siteUrl = $connect->real_escape_string($hookData['siteUrl']);
-		$status = $connect->real_escape_string($hookData['status']);
-		$title = $connect->real_escape_string($hookData['title']);
+		$id = $connect->real_escape_string($hookData['pb_id']);
+		$content = $connect->real_escape_string($hookData['pb_content']);
+		$siteUrl = $connect->real_escape_string($hookData['pb_siteUrl']);
+		$status = $connect->real_escape_string($hookData['pb_status']);
+		$title = $connect->real_escape_string($hookData['pb_title']);
 
 		$permalink = $siteUrl . '/blog/' . pb_permalink($title);
+		$hookData['pb_permalink'] = $permalink;
 
 		$query = "UPDATE pb_posts SET pb_title = '$title', pb_content = '$content', pb_permalink = '$permalink', pb_status = '$status' WHERE pb_id = $id";
 		$connect->query($query);
+
+		$getUpdate = "SELECT * FROM pb_posts WHERE pb_id = $id";
+		$getUpdatePost = $connect->query($getUpdate);
+
+		while($info = $getUpdatePost->fetch_assoc()){
+			$hookData['pb_timestamp'] = siteDateTime($info['pb_timestamp'], $connect);
+			$hookData['pb_update'] = siteDateTime($info['pb_update'], $connect);
+		}
 
 		$data = array(
 			'pluginName' => $pluginName,
