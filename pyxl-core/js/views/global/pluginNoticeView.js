@@ -9,9 +9,6 @@ define([
 
 	var PluginNoticeView = Backbone.View.extend({
 		el: $('body'),
-		initialize: function() {
-			this.$el.unbind();
-		},
 		alert: function(title, message, state, priority, hide) {
 			var notice = $('.notice');
 			// State: On/Off
