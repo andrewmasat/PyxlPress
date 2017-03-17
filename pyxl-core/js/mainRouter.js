@@ -96,6 +96,9 @@ define([
 												require(['../../pyxl-content/plugins/'+folder+'/views/indexView'], function (pluginIndex) {
 													var pluginView = new pluginIndex();
 
+													// If there are sub pages
+													hook.options.subpages = action;
+
 													pluginView.renderHook(hook.options);
 												});
 											}

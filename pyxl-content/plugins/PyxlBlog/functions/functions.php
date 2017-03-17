@@ -38,6 +38,31 @@ function pb_post_list($pluginName, $hookData, $secure, $connect) {
 	echo json_encode($data);
 }
 
+function pb_post_single($pluginName, $hookData, $secure, $connect) {
+	$query = "SELECT * FROM pb_posts WHERE pb_permalink = '$hookData'";
+	$posts = $connect->query($query);
+
+	while($info = $posts->fetch_assoc()){
+		$postSingle = array(
+			'pb_id' => $info['pb_id'],
+			'pb_author' => $info['pb_author'],
+			'pb_title' => $info['pb_title'],
+			'pb_content' => $info['pb_content'],
+			'pb_permalink' => $info['pb_permalink'],
+			'pb_status' => $info['pb_status'],
+			'pb_remove' => $info['pb_remove'],
+			'pb_update' => siteDateTime($info['pb_update'], $connect),
+			'pb_timestamp' => siteDateTime($info['pb_timestamp'], $connect)
+		);
+	}
+
+	$data = array(
+		'pluginName' => $pluginName,
+		'postSingle' => $postSingle
+	);
+	echo json_encode($data);
+}
+
 function pb_post_save($pluginName, $hookData, $secure, $connect) {
 	if ($secure) {
 		$hookDataArr = new ArrayObject($hookData);

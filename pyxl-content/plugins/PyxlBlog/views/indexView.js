@@ -9,8 +9,9 @@ define([
 	'text!plugins/PyxlBlog/templates/editPost.html',
 	'text!plugins/PyxlBlog/templates/editPostOptions.html',
 	'text!plugins/PyxlBlog/templates/postInfo.html',
-	'text!plugins/PyxlBlog/templates/blog.html'
-	], function($, _, Backbone, Bootstrap, Hooks, Notice, PostListPage, PostEditFields, PostEditOptions, PostInfo, BlogHook){
+	'text!plugins/PyxlBlog/templates/blog.html',
+	'text!plugins/PyxlBlog/templates/single.html'
+	], function($, _, Backbone, Bootstrap, Hooks, Notice, PostListPage, PostEditFields, PostEditOptions, PostInfo, BlogHook, SingleHook){
 
 	'use strict';
 
@@ -138,19 +139,46 @@ define([
 				}
 			});
 		},
-		blog: function() {
-			var hookData = {
-				hookType: 'pb_post_list',
-				hookData: '',
-				pluginName: 'PyxlBlog'
-			};
+		blog: function(options) {
+			var isSubpage = false;
+			var subPageArr = [];
+			var subPageCurrent = '';
+			var hookData = '';
+
+			for (var i = 0; i < options.subpages.length; i++) {
+				if (i > 0) {
+					isSubpage = true;
+				}
+
+				subPageArr[i] = options.subpages[i];
+				subPageCurrent = subPageArr.pop();
+			}
+
+			if (isSubpage) {
+				hookData = {
+					hookType: 'pb_post_single',
+					hookData: window.location.href,
+					pluginName: 'PyxlBlog'
+				};
+			} else {
+				hookData = {
+					hookType: 'pb_post_list',
+					hookData: '',
+					pluginName: 'PyxlBlog'
+				};
+			}
 
 			var hooks = new Hooks({request: "triggerHook"});
 			var action = Backbone.history.getFragment();
 			hooks.urlRoot = window.location.pathname.replace(action, '') + 'pyxl-include/plugins/class.plugins.php';
 			hooks.save(hookData, {
 				success: function(model, data) {
-					$('div[data-plugin="blog"]').html(_.template(BlogHook, {data:data.postList}));
+					if (isSubpage) {
+						console.log(data);
+						$('div[data-plugin="blog"]').html(_.template(SingleHook, {data:data.postSingle}));
+					} else {
+						$('div[data-plugin="blog"]').html(_.template(BlogHook, {data:data.postList}));
+					}
 				}
 			});
 		}
