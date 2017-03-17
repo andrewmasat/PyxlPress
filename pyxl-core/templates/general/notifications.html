@@ -13,7 +13,7 @@
 				<% _.each(data.notice, function(num,index) { %>
 					<li<% if(data.notice[index].read == 0) { %> class="new"<% } %>>
 						<i class="fa <%= data.notice[index].noticeIcon %>"></i>
-						<a href="<%= data.notice[index].noticeUrl %>"><%= data.notice[index].noticeTitle %></a>
+						<a href="<%= state.package.environment.navUrl + data.notice[index].noticeUrl %>"><%= data.notice[index].noticeTitle %></a>
 						<span><%= data.notice[index].timestamp %></span>
 					</li>
 				<% }); %>

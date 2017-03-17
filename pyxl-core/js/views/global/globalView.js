@@ -32,8 +32,6 @@ define([
 		el: $('body'),
 		initialize: function() {
 			this.$el.unbind();
-
-			this.statusAlertsFetch();
 		},
 		events: {
 			'click .logout': 'logout',
@@ -51,6 +49,7 @@ define([
 			this.plugins.initView(state);
 
 			// Check Status Alerts
+			this.state = state;
 			this.statusAlertsFetch(false);
 			
 			// Update Sidebar location
@@ -121,13 +120,14 @@ define([
 			}
 		},
 		statusAlertsFetch: function(active) {
+			var state = this.state;
 			var getNotice = new Notifications();
 			getNotice.fetch({
 				data: {request: "getNotice"},
 				processData: true,
 				success: function(model, data) {
 					data.active = active;
-					$('.statusAlerts').html(_.template(NotificationTemplate, {data:data}));
+					$('.statusAlerts').html(_.template(NotificationTemplate, {data:data, state:state}));
 				}
 			});
 		},
