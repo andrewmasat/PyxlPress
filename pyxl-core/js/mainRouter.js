@@ -12,29 +12,33 @@ define([
 		var AppRouter = Backbone.Router.extend({
 			routes: {
 				// Default
-				'*page': 'defaultAction'
+				'*page': 'defaultAction',
+				'*page/:id': 'defaultAction'
 			}
 		});
 
 		var initialize = function(){
+
+			// Get Url
+			var url = $('.stage').data('url');
+
 			// Router Constructor
 			var app_router = new AppRouter();
 
-			app_router.on('route:defaultAction', function (page) {
+			app_router.on('route:defaultAction', function (page, id) {
 				// Pages Constructor
-				
 			});
 			
 			Backbone.history.on("route", function() {
-				pageConstructor();
+				pageConstructor(url);
 			});
 			Backbone.history.on("route", _trackPageview);
 
-			var action = window.location.pathname.split('/').pop();
+			var action = window.location.href.replace(url,'').split('/');
 			var getRoot = new Pages();
-			getRoot.urlRoot = window.location.pathname.replace(action, '') + 'pyxl-include/admin/class.pages.php';
+			getRoot.urlRoot = url + '/pyxl-include/admin/class.pages.php';
 			getRoot.fetch({
-				data: {request: action},
+				data: {request: action[1]},
 				processData: true,
 				success: function(model, data) {
 					var url = window.location.pathname.split(data.pagePermalink);
@@ -53,13 +57,17 @@ define([
 			ga('send', 'pageview', "/"+url);
 		};
 
-		var pageConstructor = function() {
+		var urlConstructor = function () {
 
-			var action = Backbone.history.getFragment();
+
+		};
+
+		var pageConstructor = function(url) {
+			var action = Backbone.history.getFragment().split('/');
 			var getPages = new Pages();
-			getPages.urlRoot = window.location.pathname.replace(action, '') + 'pyxl-include/admin/class.pages.php';
+			getPages.urlRoot = url + '/pyxl-include/admin/class.pages.php';
 			getPages.fetch({
-				data: {request: action},
+				data: {request: action[0]},
 				processData: true,
 				success: function(model, data) {
 					// Is Installed
@@ -73,7 +81,7 @@ define([
 							if (data.pluginHooks.length !== 0) {
 								var plugins = [];
 								var getPlugin = new PluginPlay();
-								getPlugin.urlRoot = window.location.pathname.replace(action, '') + 'pyxl-include/plugins/class.pluginPlay.php';
+								getPlugin.urlRoot = url + '/pyxl-include/plugins/class.pluginPlay.php';
 
 								pageView.render(data);
 								$.each(data.pluginHooks, function(i, val) {

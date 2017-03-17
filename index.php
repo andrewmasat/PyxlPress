@@ -15,14 +15,14 @@
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<?php if ($incCoreStyles) { ?>
-			<link rel="stylesheet" type="text/css" href="pyxl-core/css/bootstrap.min.css">
-			<link rel="stylesheet" type="text/css" href="pyxl-core/css/animate.css">
+			<link rel="stylesheet" type="text/css" href="<?php echo $siteUrl; ?>/pyxl-core/css/bootstrap.min.css">
+			<link rel="stylesheet" type="text/css" href="<?php echo $siteUrl; ?>/pyxl-core/css/animate.css">
 		<?php } ?>
-		<link rel="stylesheet" type="text/css" href="pyxl-content/themes/<?php echo $theme; ?>/css/style.css">
-		<script data-main="pyxl-core/js/main" src="pyxl-core/js/libs/require/require.js"></script>
+		<link rel="stylesheet" type="text/css" href="<?php echo $siteUrl; ?>/pyxl-content/themes/<?php echo $theme; ?>/css/style.css">
+		<script data-main="<?php echo $siteUrl; ?>/pyxl-core/js/main" src="<?php echo $siteUrl; ?>/pyxl-core/js/libs/require/require.js"></script>
 	</head>
 	<body>
-		<div class="stage"></div>
+		<div class="stage" data-url="<?php echo $siteUrl; ?>"></div>
 
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
