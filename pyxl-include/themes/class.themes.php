@@ -2,7 +2,7 @@
 
 /*
  *
- * File Name: class.admin.php
+ * File Name: class.themes.php
  * Description: Theme management functionality
  *
  */
