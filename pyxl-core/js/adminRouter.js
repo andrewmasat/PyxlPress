@@ -7,13 +7,14 @@ define([
 	'views/admin/adminView',
 	'views/home/homeView',
 	'views/login/loginView',
+	'views/page/mediaView',
 	'views/page/pluginView',
 	'views/page/profileView',
 	'views/login/registerView',
 	'views/page/themesView',
 	'views/page/welcomeView'
 	], function($, _, Backbone, ActivateView, AdminView, HomeView,
-		LoginView, PluginView, ProfileView, RegisterView, ThemesView, WelcomeView) {
+		LoginView, MediaView, PluginView, ProfileView, RegisterView, ThemesView, WelcomeView) {
 
 		'use strict';
 
@@ -32,6 +33,10 @@ define([
 				'login': 'login',
 				'login/:page': 'login',
 				'login/:page/:forgotId': 'login',
+
+				// Media Page
+				'media': 'media',
+				'media/:page': 'media',
 
 				// Plugin Page
 				'plugins': 'plugins',
@@ -76,6 +81,11 @@ define([
 			app_router.on('route:login', function (page, forgotId) {
 				var loginView = new LoginView();
 				loginView.render({location:page, forgotId: forgotId});
+			});
+
+			app_router.on('route:media', function (page) {
+				var mediaView = new MediaView();
+				mediaView.render({location:page});
 			});
 
 			app_router.on('route:plugins', function (page, option, id) {

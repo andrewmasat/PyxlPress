@@ -22,6 +22,12 @@
 			</li>
 			<% if (data.account.level == 3) { %>
 				<!-- Admin Pages -->
+				<li data-target="media">
+					<a href="<%= data.environment.navUrl %>media" title="Media"><i class="fa fa-desktop"></i>Media</a>
+					<ul>
+						<li><a href="<%= data.environment.navUrl %>media/upload" data-page="upload"><i class="fa fa-upload"></i>Upload</a></li>
+					</ul>
+				</li>
 				<li data-target="themes">
 					<a href="<%= data.environment.navUrl %>themes" title="Themes"><i class="fa fa-paint-brush"></i>Themes</a>
 				</li>

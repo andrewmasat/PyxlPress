@@ -1,0 +1,49 @@
+<div class="pageOptionMenu">
+	<a href="media/upload" class="btn btn-default btn-sm">Upload Media</a>
+</div>
+<div class="row">
+	<% if(data.length) { %>
+		<table class="table table-striped">
+			<thead>
+				<tr> 
+					<th></th>
+					<th>Title</th>
+					<th>Type</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% _.each(data, function(num,index) { %>
+					<% if (data[index].mediaType === '0') { %>
+						<tr class="file image">
+							<td><img src="<%= data[index].mediaPermalink %>" onerror="this.src='http://placehold.it/150x150'" /></td>
+							<td><%= data[index].mediaTitle %></td>
+							<td>Image</td>
+							<td>edit</td>
+						</tr>
+					<% } else if (data[index].mediaType === '1') { %>
+						<tr class="file video">
+							<td><i class="fa fa-video-camera"></i></td>
+							<td><%= data[index].mediaTitle %></td>
+							<td>Video</td>
+							<td>edit</td>
+						</tr>
+					<% } else if (data[index].mediaType === '2') { %>
+						<tr class="file audio">
+							<td><i class="fa fa-music"></i></td>
+							<td><%= data[index].mediaTitle %></td>
+							<td>Audio</td>
+							<td>edit</td>
+						</tr>
+					<% } else { %>
+					<tr>
+						<td><i class="fa fa-music"></i></td>
+						<td>Missing</td>
+						<td></td>
+					</tr>
+					<% } %>
+				<% }); %>
+			</tbody>
+		</table>
+	<% } %>
+</div>

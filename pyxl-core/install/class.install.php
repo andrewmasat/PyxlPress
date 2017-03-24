@@ -100,6 +100,30 @@ if ($_POST['request'] == 'install') {
 												UNIQUE KEY email (email)
 											) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
 
+			$connect->query("CREATE TABLE IF NOT EXISTS media (
+												mediaId int(11) NOT NULL AUTO_INCREMENT,
+												mediaTitle varchar(150) NOT NULL,
+												mediaPermalink varchar(1000) NOT NULL,
+												mediaType int(1) NOT NULL,
+												mediaExtension varchar(50) NOT NULL,
+												mediaSize int(255) NOT NULL,
+												PRIMARY KEY (mediaId)
+											) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+
+			$connect->query("CREATE TABLE IF NOT EXISTS mediaMeta (
+												mediaMetaId int(11) NOT NULL AUTO_INCREMENT,
+												mediaId int(11) NOT NULL,
+												ImageWidth int(10) NULL,
+												ImageLength int(10) NULL,
+												Make varchar(50) NULL,
+												Model varchar(50) NULL,
+												Orientation int(1) NULL,
+												XResolution varchar(50) NULL,
+												YResolution varchar(50) NULL,
+												DateTime DATETIME NULL,
+												PRIMARY KEY (mediaMetaId)
+											) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+
 			$connect->query("CREATE TABLE IF NOT EXISTS notifications (
 												notificationId int(11) NOT NULL AUTO_INCREMENT,
 												userId int(11) NOT NULL,
@@ -118,16 +142,17 @@ if ($_POST['request'] == 'install') {
 											(4, 'Admin', 3);");
 
 			$connect->query("INSERT INTO security (securityId, location, level, active) VALUES
-											(1, 'home', 0, 1),
-											(2, 'register', 0, 1),
-											(3, 'activate', 0, 1),
+											(1, 'activate', 0, 1),
+											(2, 'admin', 3, 1),
+											(3, 'home', 0, 1),
 											(4, 'login', 0, 1),
-											(5, 'profile', 1, 1),
-											(6, 'admin', 3, 1),
-											(7, 'pages', 3, 1),
-											(8, 'themes', 3, 1),
-											(9, 'plugins', 3, 1),
-											(10, 'welcome', 1, 1);");
+											(5, 'media', 3, 1),
+											(6, 'pages', 3, 1),
+											(7, 'plugins', 3, 1),
+											(8, 'profile', 1, 1),
+											(9, 'register', 0, 1),
+											(10, 'themes', 3, 1),
+											(11, 'welcome', 1, 1);");
 
 			$connect->query("INSERT INTO pages (pageId, pagePermalink, pageFileName, pageTheme) VALUES
 											(1, 'index', 'index', 'pyxlate'),
