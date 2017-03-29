@@ -689,6 +689,7 @@ h2.title {
 	cursor: pointer;
 	height: 150px;
 	position: relative;
+	transition: all 0.3s ease-in;
 }
 .media .mediaDrop .mediaDropIcon {
 	color: #ccc;
@@ -698,11 +699,17 @@ h2.title {
 		left: 50%;
 		top: 50%;
 	text-align: center;
+	transition: all 0.3s ease-in;
 	width: 100px;
 }
 .media .mediaDrop .mediaDropIcon i {
 	display: block;
 	font-size: 35px;
+}
+.media .mediaDrop:hover,
+.media .mediaDrop:hover .mediaDropIcon {
+	border-color: #1ab394;
+	color: #1ab394;
 }
 .media ul.prepUploadList {
 	list-style: none;

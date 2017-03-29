@@ -5,6 +5,7 @@ define([
 	'models/general/environment',
 	'models/general/enforcer',
 	'models/media/media',
+	'models/media/mediaUpload',
 	'views/global/globalView',
 	'text!templates/home/page.html',
 	'text!templates/general/header.html',
@@ -14,7 +15,7 @@ define([
 	'text!templates/media/mediaListTemplate.html',
 	'text!templates/media/mediaUploadTemplate.html',
 	'text!templates/media/mediaPrepUploadTemplate.html'
-	], function($, _, Backbone, Environment, Enforcer, Media, GlobalEvents, 
+	], function($, _, Backbone, Environment, Enforcer, Media, MediaUpload, GlobalEvents, 
 				Page, Header, Footer, Sidebar, MediaTemplate, MediaListTemplate, MediaUploadTemplate, MediaPrepUploadTemplate){
 
 	'use strict';
@@ -24,7 +25,8 @@ define([
 		el: $('.stage'),
 		events: {
 			'click .mediaDrop': 'openFileDrop',
-			'change input[type=file]': 'prepareUpload'
+			'change input[type=file]': 'prepareUpload',
+			'submit #file': 'uploadMedia'
 		},
 		initialize: function() {
 			var that = this;
@@ -112,11 +114,35 @@ define([
 		},
 		prepareUpload: function(e) {
 			this.package.page.files = e.target.files;
-
-			console.log(this.package.page.files);
-
 			$('.prepUploadList').prepend(_.template(MediaPrepUploadTemplate, {data:this.package.page.files}));
+console.log(e.target.files);
+			$('#file').submit();
 		},
+		uploadMedia: function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			
+			var that = this;
+			var data = new FormData();
+			$.each(this.package.page.files, function(key, value) {
+				data.append(key, value);
+			});
+
+			console.log(data);
+
+			var uploadFiles = new MediaUpload();
+			uploadFiles.fetch({
+				type: 'POST',
+				data: data,
+				cache: false,
+				dataType: 'json',
+				processData: false, 
+				contentType: false,
+				success: function() {
+					console.log('upload complete');
+				}
+			});
+		}
 	});
 
 	return MediaView;

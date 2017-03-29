@@ -69,7 +69,7 @@ if (isset($_SESSION['username'])) {
 		if(isset($_GET['files'])) {	
 			$avatar = '';
 
-			$uploaddir = '../../pyxl-content/images/avatars/'.$username.'/';
+			$uploaddir = '../../pyxl-content/media/avatars/'.$username.'/';
 			if (!is_dir($uploaddir)) {
 				mkdir($uploaddir);
 			}

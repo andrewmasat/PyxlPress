@@ -1,5 +1,5 @@
 <div class="pageOptionMenu">
-	<div class="userAvatar"><img src="<%= data.siteUrl %>/pyxl-content/images/avatars/<%= data.username %>/<%= data.avatar %>" onerror="this.src='http://placehold.it/60x60'"></div>
+	<div class="userAvatar"><img src="<%= data.siteUrl %>/pyxl-content/media/avatars/<%= data.username %>/<%= data.avatar %>" onerror="this.src='http://placehold.it/60x60'"></div>
 	<span>User Id: <%= data.userId %></span>
 	<span><% if(data.verified == 1) { %>Verified<% } else { %>Not Verified<% } %></span>
 	<span>Last Logged In: <%= data.loginAttempt %></span>
