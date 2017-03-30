@@ -115,7 +115,6 @@ define([
 		prepareUpload: function(e) {
 			this.package.page.files = e.target.files;
 			$('.prepUploadList').prepend(_.template(MediaPrepUploadTemplate, {data:this.package.page.files}));
-console.log(e.target.files);
 			$('#file').submit();
 		},
 		uploadMedia: function(e) {
@@ -124,23 +123,45 @@ console.log(e.target.files);
 			
 			var that = this;
 			var data = new FormData();
+			var uploadFiles = new MediaUpload();
 			$.each(this.package.page.files, function(key, value) {
 				data.append(key, value);
-			});
 
-			console.log(data);
+				var uploadData = new FormData();
+				uploadData.append(key, value);
 
-			var uploadFiles = new MediaUpload();
-			uploadFiles.fetch({
-				type: 'POST',
-				data: data,
-				cache: false,
-				dataType: 'json',
-				processData: false, 
-				contentType: false,
-				success: function() {
-					console.log('upload complete');
-				}
+				uploadFiles.fetch({
+					xhr: function() {
+						var xhr = new window.XMLHttpRequest();
+
+						xhr.upload.addEventListener("progress", function(e) {
+							if (e.lengthComputable) {
+								var percentComplete = e.loaded / e.total;
+								percentComplete = parseInt(percentComplete * 100);
+								$('.prepUploadList').find("[data-name='" + value.name + "'] .loading").css('width', percentComplete + '%');
+
+								if (percentComplete === 100) {
+									setTimeout(function() {
+										$('.prepUploadList').find("[data-name='" + value.name + "']").removeClass('loading');
+										$('.prepUploadList').find("[data-name='" + value.name + "'] .loading").css('opacity', 0);
+									}, 1000);
+								}
+
+							}
+						}, false);
+
+						return xhr;
+					},
+					type: 'POST',
+					data: uploadData,
+					cache: false,
+					dataType: 'json',
+					processData: false, 
+					contentType: false,
+					success: function(model, data) {
+						console.log(data);
+					}
+				});
 			});
 		}
 	});

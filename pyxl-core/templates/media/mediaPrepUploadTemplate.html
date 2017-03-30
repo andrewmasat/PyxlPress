@@ -1,3 +1,3 @@
 <% _.each(data, function(num,index) { %>
-	<li><%= data[index].name %></li>
+	<li data-name="<%= data[index].name %>" class="loading"><span><%= data[index].name %></span><div class="loading"></div></li>
 <% }); %>

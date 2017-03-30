@@ -11,13 +11,9 @@
 include_once('../config/class.connect.php');
 
 if (isset($_GET['request'])) {
-	if (empty($_GET['request'])) {
-		$request = 'index';
-	} else if (isset($_GET['files'])) {
-		$request = 'uploadMedia';
-	} else {
-		$request = $_GET['request'];
-	}
+	$request = $_GET['request'];
+} else if (isset($_GET['files'])) {
+	$request = 'uploadMedia';
 } else {
 	$data = json_decode(file_get_contents('php://input'));
 	$request = $data->{'request'};
@@ -47,17 +43,30 @@ if ($request == 'getMedia') {
 
 if ($request == 'uploadMedia') {
 	if(isset($_GET['files'])) {	
-		$media = array();
+		$media = '';
 
-		// $uploaddir = '../../pyxl-content/media/uploads/'.$date('Y/m', time()).'/';
-		$uploaddir = '../../pyxl-content/media/uploads/';
-		if (!is_dir($uploaddir)) {
-			mkdir($uploaddir);
+		$settingsSql = "SELECT * FROM settings";
+		$envProp = $connect->query($settingsSql);
+		while($info = $envProp->fetch_assoc()){
+			$siteUrl = $info['siteUrl'];
 		}
+
+		$originDir = '../../pyxl-content/media/uploads/';
+		$uploadDirYear = $originDir . date('Y', time()).'/';
+		$uploadDirMonth = $uploadDirYear . date('m', time()).'/';
+		if (!is_dir($uploadDirYear)) {
+			mkdir($uploadDirYear);
+		}
+		if (!is_dir($uploadDirMonth)) {
+			mkdir($uploadDirMonth);
+		}
+
 		foreach($_FILES as $file) {
-			if(move_uploaded_file($file['tmp_name'], $uploaddir .basename($file['name']))) {
-				$mediaTitle = $file['name'];
-				$mediaPermalink = $uploaddir . $mediaTitle;
+			$fileName = fileExists($file['name'], $uploadDirMonth);
+
+			if(move_uploaded_file($file['tmp_name'], $uploadDirMonth . basename($fileName))) {
+				$mediaTitle = $fileName;
+				$mediaPermalink = str_replace('../..', $siteUrl, $uploadDirMonth) . $mediaTitle;
 				$mediaType = $file['type'];
 				$mediaExtension = end(explode('.', $file['name']));
 				$mediaSize = $file['size'];
@@ -67,7 +76,7 @@ if ($request == 'uploadMedia') {
 				$connect->query($mediaSql);
 				$mediaId = $connect->insert_id;
 
-				$media[] = array(
+				$media = array(
 					'mediaId' => $mediaId,
 					'mediaTitle' => $mediaTitle,
 					'mediaPermalink' => $mediaPermalink,
@@ -83,5 +92,21 @@ if ($request == 'uploadMedia') {
 			'media' => $media
 		);
 		echo json_encode($data);
+	}
+}
+
+function fileExists($fileName, $filePath) {
+	$count = 1;
+	if (file_exists($filePath . $filename)) {
+		while(!$results) {
+			$file = explode('.', $fileName);
+			if (!file_exists($filePath . $file[0] . '_' . $count . '.' . $file[1])) {
+				$results = $file[0] . '_' . $count . '.' . $file[1];
+			}
+			$count++;
+		}
+		return $results;
+	} else {
+		return $fileName;	
 	}
 }

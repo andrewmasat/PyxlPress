@@ -721,9 +721,30 @@ h2.title {
 	border-top: none;
 	margin: 0;
 	padding: 10px 15px;
+	position: relative;
+	transition: all 0.5s ease;
 }
 .media ul.prepUploadList li:first-child {
 	border-top: 1px solid #eaeaea;
+}
+.media ul.prepUploadList li.loading {
+	color: #fff;
+}
+.media ul.prepUploadList li span {
+	position: relative;
+	z-index: 1;
+}
+.media ul.prepUploadList li .loading {
+	background: #1ab394;
+	border: 1px solid #fff;
+	height: 100%;
+	opacity: 1;
+	position: absolute;
+		bottom: 0;
+		left: 0;
+		top: 0;
+	transition: all 0.5s ease;
+	z-index: 0;
 }
 
 /* Admin Panel - Themes */
