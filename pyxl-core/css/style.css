@@ -681,6 +681,19 @@ h2.title {
 	min-height: 150px;
 	margin-left: 165px;
 }
+.media .file .placeholder {
+	height: 100px;
+	position: relative;
+	width: 150px;
+}
+.media .file .placeholder i {
+	font-size: 50px;
+	margin-top: -25px;
+	position: absolute;
+		top: 50%;
+	text-align: center;
+	width: 100%;
+}
 .media #file {
 	display: none;
 }

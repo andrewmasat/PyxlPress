@@ -14,9 +14,11 @@ define([
 	'text!templates/media/mediaTemplate.html',
 	'text!templates/media/mediaListTemplate.html',
 	'text!templates/media/mediaUploadTemplate.html',
-	'text!templates/media/mediaPrepUploadTemplate.html'
+	'text!templates/media/mediaPrepUploadTemplate.html',
+	'text!templates/media/mediaCompleteUploadTemplate.html'
 	], function($, _, Backbone, Environment, Enforcer, Media, MediaUpload, GlobalEvents, 
-				Page, Header, Footer, Sidebar, MediaTemplate, MediaListTemplate, MediaUploadTemplate, MediaPrepUploadTemplate){
+				Page, Header, Footer, Sidebar, MediaTemplate, MediaListTemplate, MediaUploadTemplate,
+				MediaPrepUploadTemplate, MediaCompleteUploadTemplate){
 
 	'use strict';
 
@@ -159,7 +161,7 @@ define([
 					processData: false, 
 					contentType: false,
 					success: function(model, data) {
-						console.log(data);
+						$('.prepUploadList').find("[data-name='" + value.name + "']").html(_.template(MediaCompleteUploadTemplate, {data:data.media}));
 					}
 				});
 			});

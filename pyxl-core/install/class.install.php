@@ -104,7 +104,7 @@ if ($_POST['request'] == 'install') {
 												mediaId int(11) NOT NULL AUTO_INCREMENT,
 												mediaTitle varchar(150) NOT NULL,
 												mediaPermalink varchar(1000) NOT NULL,
-												mediaType int(1) NOT NULL,
+												mediaType varchar(100) NOT NULL,
 												mediaExtension varchar(50) NOT NULL,
 												mediaSize int(255) NOT NULL,
 												PRIMARY KEY (mediaId)
