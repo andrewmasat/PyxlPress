@@ -5,9 +5,9 @@
 	<table class="table table-striped">
 		<thead>
 			<tr> 
-				<th></th>
+				<th>Preview</th>
 				<th>Title</th>
-				<th>Type</th>
+				<th>Media Type</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -18,28 +18,28 @@
 						<td><img src="<%= data[index].mediaPermalink %>" onerror="this.src='http://placehold.it/150x150'" /></td>
 						<td><%= data[index].mediaTitle %></td>
 						<td>Image</td>
-						<td>edit</td>
+						<td><a href="#" class="btn btn-sm btn-default">Edit</a></td>
 					</tr>
 				<% } else if (data[index].mediaType.split('/')[0] === 'video') { %>
 					<tr class="file video">
 						<td><div class="placeholder"><i class="fa fa-video-camera"></i></div></td>
 						<td><%= data[index].mediaTitle %></td>
 						<td>Video</td>
-						<td>edit</td>
+						<td><a href="#" class="btn btn-sm btn-default">Edit</a></td>
 					</tr>
 				<% } else if (data[index].mediaType.split('/')[0] === 'audio') { %>
 					<tr class="file audio">
 						<td><div class="placeholder"><i class="fa fa-music"></i></div></td>
 						<td><%= data[index].mediaTitle %></td>
 						<td>Audio</td>
-						<td>edit</td>
+						<td><a href="#" class="btn btn-sm btn-default">Edit</a></td>
 					</tr>
 				<% } else { %>
 					<tr class="file">
-						<td><div class="placeholder"><i class="fa fa-file"></i></div></td>
+						<td><div class="placeholder"><i class="fa fa-file-o"></i></div></td>
 						<td><%= data[index].mediaTitle %></td>
 						<td>File</td>
-						<td>edit</td>
+						<td><a href="#" class="btn btn-sm btn-default">Edit</a></td>
 					</tr>
 				<% } %>
 			<% }); %>
