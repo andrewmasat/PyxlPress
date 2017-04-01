@@ -1,5 +1,5 @@
 <div class="pageOptionMenu">
-	<a href="admin/users/new" class="btn btn-default btn-sm createUser">Create User</a>
+	<a href="users/new" class="btn btn-default btn-sm createUser">Create User</a>
 </div>
 <table class="table table-striped">
 	<thead>
@@ -30,7 +30,7 @@
 				<td><%= data[index].createDate %></td>
 				<td class="text-right">
 					<% if(data[index].disabled == 1) { %><i class="fa fa-lock"></i><% } %>
-					<a href="admin/users/<%= data[index].userId %>" class="btn btn-xs btn-default">Edit</a>
+					<a href="users/<%= data[index].userId %>" class="btn btn-xs btn-default">Edit</a>
 				</td>
 			</tr>
 		<% }); %>
