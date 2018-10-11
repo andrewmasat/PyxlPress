@@ -20,7 +20,7 @@ define([
 		var initialize = function(){
 
 			// Get Url
-			var url = $('.stage').data('url');
+			var url = 'http://localhost:8888';
 
 			// Router Constructor
 			var app_router = new AppRouter();
